@@ -1,4 +1,24 @@
+## 相关网站
 
+- http://www.745w.com/
+
+## 奇迹 muonline 数据库基础库分析
+
+一、表的组成：
+
+1. AccountCharacter 用来存放帐号的角色。
+
+2. Character 用来存放每个角色的详细数据。
+
+3. MEMB_INFO 帐号信息
+
+4. MEMB_STAT 帐号状态
+
+5. warehouse 仓库
+
+6. VI_CURR_INFO 帐号费用
+
+7. WEB_ZS PL 网站的转生数据
 
 ## 去除奇迹默认加密
 
