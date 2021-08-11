@@ -33,6 +33,7 @@ App.options("/*", (req, res, next) => {
   res.end();
 });
 
+// get all users
 App.get("/users", async (req, res) => {
   const query = "SELECT * FROM MuOnline.dbo.MEMB_INFO";
   const conn = await getConnection();
@@ -74,14 +75,18 @@ async function createUser(username, password) {
   });
 }
 
+// get single user
 App.get("/users/:userName", async (req, res) => {
   const { userName } = req.params;
   const user = await getByUserName(userName);
   res.json(user);
 });
 
-App.get("/users/auth/register", async (req, res) => {
-  const [username, password] = ["test11", "123"];
+// create user
+App.post("/users/auth/register", async (req, res) => {
+  const body = req.body;
+  console.log(body);
+  const { username, password } = body;
   const user = await getByUserName(username);
 
   if (user) {
