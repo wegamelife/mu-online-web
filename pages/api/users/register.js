@@ -1,4 +1,4 @@
-import { createUser, getByUserName } from "../../../lib/index.js";
+import { createUser, getByUserName } from "../../../lib";
 
 export default async function handler(req, res) {
   if (req.method !== "POST") {
