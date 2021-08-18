@@ -1,4 +1,4 @@
-import {createUser, getCharactersByAccount} from "../../../lib";
+import { getCharactersByAccount} from "../../../lib";
 
 export default async function handler(req, res) {
     const { username } = req.query;
