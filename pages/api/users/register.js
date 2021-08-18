@@ -17,7 +17,13 @@ export default async function handler(req, res) {
       message: "user already exists",
     });
   } else {
-    const rs = await createUser(username, password);
-    res.json(rs);
+    try {
+      const rs = await createUser(username, password);
+      res.json(rs);
+    } catch (err) {
+      res.status(500).send({
+        message: "something went wrong",
+      });
+    }
   }
 }

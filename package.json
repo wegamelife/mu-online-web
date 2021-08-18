@@ -5,11 +5,12 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start",
+    "start": "next start --port 80",
     "lint": "next lint"
   },
   "dependencies": {
     "@types/node": "^16.4.13",
+    "axios": "^0.21.1",
     "bootstrap": "^5.0.2",
     "express": "^4.17.1",
     "msnodesqlv8": "^2.2.0",

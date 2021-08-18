@@ -7,9 +7,12 @@ import {
   Navbar,
   NavDropdown,
 } from "react-bootstrap";
-import Button from "react-bootstrap/Button";
+
+import { useContext } from "react";
+import { UserContext } from "../pages/_app";
 
 export default function Layout({ children, home }) {
+  const { user, updateUser } = useContext(UserContext);
   return (
     <div>
       <Head>
@@ -23,13 +26,29 @@ export default function Layout({ children, home }) {
             <Navbar.Toggle aria-controls="navbarScroll" />
             <Navbar.Collapse id="navbarScroll">
               <Nav className="me-auto" navbarScroll>
-                <Nav.Link href="#action1">账号管理</Nav.Link>
+                <Nav.Link href="/account-page">账号管理</Nav.Link>
                 <Nav.Link href="#action2">游戏下载</Nav.Link>
               </Nav>
-              <Nav>
-                <Nav.Link href="/login">登录</Nav.Link>
-                <Nav.Link href="/register">注册</Nav.Link>
-              </Nav>
+              {!user ? (
+                <Nav>
+                  <Nav.Link href="/login-page">登录</Nav.Link>
+                  <Nav.Link href="/register-page">注册</Nav.Link>
+                </Nav>
+              ) : (
+                <Nav>
+                  <Nav.Link href="/">{user["memb___id"]}</Nav.Link>
+                  <Nav.Link
+                    href="/"
+                    onClick={(e) => {
+                      e.preventDefault();
+                      localStorage.removeItem("user");
+                      location.reload("/");
+                    }}
+                  >
+                    退出
+                  </Nav.Link>
+                </Nav>
+              )}
             </Navbar.Collapse>
           </Container>
         </Navbar>
