@@ -1,28 +1,30 @@
 import Button from "react-bootstrap/Button";
 import Layout from "../components/Layout";
-import { Form, Alert } from "react-bootstrap";
-import { useState, useContext, useEffect } from "react";
-import { UserContext } from "./_app";
-import { useRouter } from "next/router";
+import {Form, Alert, Card} from "react-bootstrap";
+import {useState, useContext, useEffect} from "react";
+import {UserContext} from "./_app";
+import {useRouter} from "next/router";
 import axios from "axios";
 
 export default function AccountPage() {
-  const { user, updateUser } = useContext(UserContext);
-  const router = useRouter();
+    const {user, updateUser} = useContext(UserContext);
+    const router = useRouter();
 
-  console.log(user);
-  return (
-    <Layout>
-      {user ? (
-        <div>
-          <h5 className="mb-3">账号管理</h5>
-          <p>用户名: {user['memb__id']}</p>
-          <p>积分: {user['jf']}</p>
-          <p>modi_days: {user['modi_days']}</p>
-        </div>
-      ) : (
-        <div>Login first</div>
-      )}
-    </Layout>
-  );
+    console.log(user);
+    return (
+        <Layout>
+            <Card style={{width: '18rem'}}>
+                <Card.Body>
+                    <Card.Title>红绿灯的黄 (魔法师)</Card.Title>
+                    <Card.Text>
+                        <p>转生次数: </p>
+                        <p>当前等级: </p>
+                        <p>当前等级: </p>
+                    </Card.Text>
+                    <Card.Link href="#">转生</Card.Link>
+                    <Card.Link href="#">洗点</Card.Link>
+                </Card.Body>
+            </Card>
+        </Layout>
+    );
 }

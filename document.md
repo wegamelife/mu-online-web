@@ -25,8 +25,10 @@
 ```sql
 -- 转换加密
 DROP INDEX MEMB_INFO.pk_membpwd_index;
-alter table MEMB_INFO drop column memb__pwd;
-alter table MEMB_INFO add memb__pwd varchar(10) NOT NULL DEFAULT (0);
+alter table MEMB_INFO
+    drop column memb__pwd;
+alter table MEMB_INFO
+    add memb__pwd varchar(10) NOT NULL DEFAULT (0);
 
 -- 然后修改 JoinServer/KGConfig.ini 中 UseMD5 = 0
 ```
@@ -47,5 +49,16 @@ values ('test1', '123', 'name', '1111111111111', GETDATE(), GETDATE(), GETDATE()
 ```sql
 -- 查看用户在线状态
 -- 在线1, 下线 0
-select ConnectStat from MEMB_STAT where memb___id = 'buuug7';
+select ConnectStat
+from MEMB_STAT
+where memb___id = 'buuug7';
+```
+
+## 套装值
+
+```
+5 普通套装 
+9 体力+10的 普通套装
+6 强化套装 
+10 体力 +10的 强化套装
 ```
