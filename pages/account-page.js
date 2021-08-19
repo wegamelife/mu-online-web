@@ -146,6 +146,10 @@ function Character({ item }) {
               )
               .then((r) => {
                 console.log(r.data);
+                setMessage("成功转职");
+                setTimeout(() => {
+                  location.reload();
+                }, 2000);
               })
               .catch((err) => {
                 console.log(err.response.data);
@@ -161,7 +165,25 @@ function Character({ item }) {
         <Button
           variant="outline-primary"
           onClick={() => {
-            setMessage("这个功能还没做完！");
+            setLoading(true);
+            axios
+              .get(
+                `/api/users/clearPoints?username=${item["AccountID"]}&characterName=${item["Name"]}`
+              )
+              .then((r) => {
+                console.log(r.data);
+                setMessage("洗点成功");
+                setTimeout(() => {
+                  location.reload();
+                }, 2000);
+              })
+              .catch((err) => {
+                console.log(err.response.data);
+                setMessage(err.response.data.message);
+              })
+              .finally(() => {
+                setLoading(false);
+              });
           }}
         >
           洗点
