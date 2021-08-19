@@ -28,7 +28,7 @@ export default function UserRankPage() {
 function Character({ item, index }) {
   const roleName = getRoleNameByCode(item["Class"]);
   return (
-    <Card style={{ width: "20rem", marginBottom: "1rem" }} key={item["Name"]}>
+    <Card style={{ width: "20rem" }} key={item["Name"]}>
       <Card.Header>
         <div className="c-header">
           <RenderImg roleName={roleName} />
@@ -43,7 +43,6 @@ function Character({ item, index }) {
       <ListGroup className="list-group-flush">
         <ListGroupItem>转生次数: {item["ResetLife"]}</ListGroupItem>
         <ListGroupItem>当前等级: {item["cLevel"]}</ListGroupItem>
-        <ListGroupItem>剩余点数: {item["LevelUpPoint"]}</ListGroupItem>
         <ListGroupItem>力量: {item["Strength"]}</ListGroupItem>
         <ListGroupItem>敏捷: {item["Dexterity"]}</ListGroupItem>
         <ListGroupItem>体力: {item["Vitality"]}</ListGroupItem>

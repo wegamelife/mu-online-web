@@ -37,7 +37,7 @@ export default function Layout({ children, home }) {
                 </Nav>
               ) : (
                 <Nav>
-                  <Nav.Link href="/">{user["memb___id"]}</Nav.Link>
+                  <Nav.Link href="/">{user["memb___id"]}({user["jf"]})</Nav.Link>
                   <Nav.Link
                     href="/"
                     onClick={(e) => {
