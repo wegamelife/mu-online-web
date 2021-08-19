@@ -27,6 +27,7 @@ export default function Layout({ children, home }) {
             <Navbar.Collapse id="navbarScroll">
               <Nav className="me-auto" navbarScroll>
                 <Nav.Link href="/account-page">账号管理</Nav.Link>
+                <Nav.Link href="/user-rank-page">排行榜</Nav.Link>
                 <Nav.Link href="#action2">游戏下载</Nav.Link>
               </Nav>
               {!user ? (

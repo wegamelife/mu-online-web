@@ -1,6 +1,6 @@
 import Button from "react-bootstrap/Button";
 import Layout from "../components/Layout";
-import { Form, Alert, Card, ListGroup, ListGroupItem } from "react-bootstrap";
+import { Alert, Card, ListGroup, ListGroupItem } from "react-bootstrap";
 import { useState, useContext, useEffect } from "react";
 import { UserContext } from "./_app";
 import { useRouter } from "next/router";
@@ -17,7 +17,7 @@ export default function AccountPage() {
       return;
     }
     axios
-      .get(`/api/users/getCharacters?username=${user.memb___id}`)
+      .get(`/api/users/getCharacterByUsername?username=${user.memb___id}`)
       .then((r) => {
         console.log(r.data);
         setCharacters(r.data);
@@ -44,7 +44,7 @@ export default function AccountPage() {
   );
 }
 
-function getRoleNameByCode(code) {
+export function getRoleNameByCode(code) {
   let rs = "未知";
   switch (code) {
     case 0:
@@ -70,7 +70,7 @@ function getRoleNameByCode(code) {
   return rs;
 }
 
-function RenderImg({ roleName }) {
+export function RenderImg({ roleName }) {
   let imgSrc = "/mofashi.jpg";
 
   switch (roleName) {

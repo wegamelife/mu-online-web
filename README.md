@@ -4,14 +4,15 @@
 
 ## 特色
 
-+ 注册
-+ 登录
-+ 转生
-+ 洗点
+- 注册
+- 登录
+- 转生
+- 洗点
+- 排行榜
 
 ## 如何使用
 
-1. 请确保你服务器上安装了nodejs
+1. 请确保你服务器上安装了 nodejs
 2. 下载该代码
 3. 命令行中运行 `npm config set registry https://registry.npm.taobao.org`
 4. 打开 CMD 切换到代码根目录运行 `npm install`

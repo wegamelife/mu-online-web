@@ -22,3 +22,15 @@ body {
 .c-header .name-role {
   margin-left: 1rem;
 }
+
+.rank {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  gap: 1rem;
+}
+
+@media (max-width: 1024px) {
+  .rank {
+    grid-template-columns: 1fr 1fr;
+  }
+}
