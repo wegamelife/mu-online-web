@@ -101,7 +101,10 @@ function RenderImg({ roleName }) {
 
 function Character({ item }) {
   const [message, setMessage] = useState("");
-  const [loading, setLoading] = useState(false);
+  const [loading1, setLoading1] = useState(false);
+  const [loading2, setLoading2] = useState(false);
+  const [loading3, setLoading3] = useState(false);
+
   const roleName = getRoleNameByCode(item["Class"]);
 
   return (
@@ -119,6 +122,10 @@ function Character({ item }) {
         <ListGroupItem>转生次数: {item["ResetLife"]}</ListGroupItem>
         <ListGroupItem>当前等级: {item["cLevel"]}</ListGroupItem>
         <ListGroupItem>剩余点数: {item["LevelUpPoint"]}</ListGroupItem>
+        <ListGroupItem>力量: {item["Strength"]}</ListGroupItem>
+        <ListGroupItem>敏捷: {item["Dexterity"]}</ListGroupItem>
+        <ListGroupItem>体力: {item["Vitality"]}</ListGroupItem>
+        <ListGroupItem>智力: {item["Energy"]}</ListGroupItem>
       </ListGroup>
       <Card.Body>
         {message && <Alert variant="danger">{message}</Alert>}
@@ -129,17 +136,17 @@ function Character({ item }) {
             const resetLife = item["ResetLife"];
             const cLevel = item["cLevel"];
 
-            if (resetLife > 100) {
+            if (resetLife > 99) {
               setMessage("你已经满转了");
               return;
             }
 
-            if (cLevel < 349) {
-              setMessage("当前角色等级不到350");
+            if (cLevel < 399) {
+              setMessage("当前角色等级不到400");
               return;
             }
 
-            setLoading(true);
+            setLoading1(true);
             axios
               .get(
                 `/api/users/resetLife?username=${item["AccountID"]}&characterName=${item["Name"]}`
@@ -149,23 +156,51 @@ function Character({ item }) {
                 setMessage("成功转职");
                 setTimeout(() => {
                   location.reload();
-                }, 2000);
+                }, 1000);
               })
               .catch((err) => {
                 console.log(err.response.data);
                 setMessage(err.response.data.message);
               })
               .finally(() => {
-                setLoading(false);
+                setLoading1(false);
               });
           }}
         >
-          {loading ? "Loading..." : "转生"}
+          {loading1 ? "Loading..." : "转生"}
+        </Button>
+
+        <Button
+          variant="outline-primary"
+          style={{ marginRight: ".5rem" }}
+          onClick={() => {
+            setLoading2(true);
+            axios
+              .get(
+                `/api/users/autoAddPoints?username=${item["AccountID"]}&characterName=${item["Name"]}`
+              )
+              .then((r) => {
+                console.log(r.data);
+                setMessage("自动加点成功");
+                setTimeout(() => {
+                  location.reload();
+                }, 1000);
+              })
+              .catch((err) => {
+                console.log(err.response.data);
+                setMessage(err.response.data.message);
+              })
+              .finally(() => {
+                setLoading2(false);
+              });
+          }}
+        >
+          {loading2 ? "Loading..." : "自动加点"}
         </Button>
         <Button
           variant="outline-primary"
           onClick={() => {
-            setLoading(true);
+            setLoading3(true);
             axios
               .get(
                 `/api/users/clearPoints?username=${item["AccountID"]}&characterName=${item["Name"]}`
@@ -175,18 +210,18 @@ function Character({ item }) {
                 setMessage("洗点成功");
                 setTimeout(() => {
                   location.reload();
-                }, 2000);
+                }, 1000);
               })
               .catch((err) => {
                 console.log(err.response.data);
                 setMessage(err.response.data.message);
               })
               .finally(() => {
-                setLoading(false);
+                setLoading3(false);
               });
           }}
         >
-          洗点
+          {loading3 ? "Loading..." : "洗点"}
         </Button>
       </Card.Body>
     </Card>

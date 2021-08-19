@@ -20,4 +20,4 @@
 
 ## 如何修改网站监听端口
 
-请修改 package.json 文件中的 `"start": "next start --port 80"` 这一样
+请修改 package.json 文件中 `"start": "next start --port 80"` port 后面的端口号
