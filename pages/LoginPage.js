@@ -1,10 +1,9 @@
-import Button from "react-bootstrap/Button";
 import Layout from "../components/Layout";
-import { Form, Alert } from "react-bootstrap";
+import { Form, Alert, Button } from "react-bootstrap";
 import { useState, useContext } from "react";
 import { useRouter } from "next/router";
-import axios from "axios";
 import { UserContext } from "./_app";
+import axios from "axios";
 
 export default function LoginPage() {
   const router = useRouter();
@@ -17,6 +16,7 @@ export default function LoginPage() {
   return (
     <Layout>
       <h5 className="mb-3">用户登录</h5>
+      <hr />
       {message && <Alert variant="danger">{message}</Alert>}
 
       <Form>
@@ -62,10 +62,11 @@ export default function LoginPage() {
                 password: password,
               })
               .then((res) => {
-                localStorage.setItem("user", JSON.stringify(res.data));
-                updateUser(res.data);
-
-                router.replace("/account-page");
+                const user = res.data;
+                delete user["memb__pwd"];
+                localStorage.setItem("user", JSON.stringify(user));
+                updateUser(user);
+                router.replace("/MyHomePage");
               })
               .catch((err) => {
                 console.log(err.response.data);

@@ -27,10 +27,25 @@ body {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
   gap: 1rem;
+  margin-bottom: 2rem;
 }
 
 @media (max-width: 1024px) {
   .rank {
     grid-template-columns: 1fr 1fr;
   }
+}
+
+.rank-card {
+  position: relative;
+}
+
+.rank-card .index {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+.rank-card .card-header {
+  background-color: #fff;
 }

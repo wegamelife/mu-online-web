@@ -7,7 +7,7 @@ import { useRouter } from "next/router";
 import axios from "axios";
 import Image from "next/image";
 
-export default function AccountPage() {
+export default function MyHomePage() {
   const { user, updateUser } = useContext(UserContext);
   const router = useRouter();
   const [characters, setCharacters] = useState([]);
@@ -16,12 +16,17 @@ export default function AccountPage() {
     if (!user) {
       return;
     }
+
     axios
       .get(`/api/users/getCharacterByUsername?username=${user.memb___id}`)
       .then((r) => {
-        console.log(r.data);
         setCharacters(r.data);
       });
+
+    axios.get(`/api/users/${user.memb___id}`).then((r) => {
+      updateUser(r.data);
+    });
+
   }, [user]);
 
   if (!user) {
@@ -34,7 +39,8 @@ export default function AccountPage() {
 
   return (
     <Layout>
-      <h4>角色管理</h4>
+      <h5>角色管理</h5>
+      <hr />
       <div className="characters">
         {characters.map((item) => (
           <Character item={item} key={item["Name"]} />

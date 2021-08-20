@@ -1,10 +1,10 @@
 import Layout from "../components/Layout";
 import { Card, ListGroup, ListGroupItem } from "react-bootstrap";
 import { useState, useEffect } from "react";
+import { getRoleNameByCode, RenderImg } from "./MyHomePage";
 import axios from "axios";
-import { getRoleNameByCode, RenderImg } from "./account-page";
 
-export default function UserRankPage() {
+export default function RankPage() {
   const [users, setUsers] = useState([]);
 
   useEffect(() => {
@@ -16,6 +16,7 @@ export default function UserRankPage() {
   return (
     <Layout>
       <h5 className="mb-3">玩家排行榜</h5>
+      <hr />
       <div className="rank">
         {users.map((item, index) => (
           <Character item={item} key={item["Name"]} index={index} />
@@ -28,13 +29,14 @@ export default function UserRankPage() {
 function Character({ item, index }) {
   const roleName = getRoleNameByCode(item["Class"]);
   return (
-    <Card style={{ width: "20rem" }} key={item["Name"]}>
+    <Card style={{ width: "20rem" }} key={item["Name"]} className="rank-card">
+      <span className="index">{index + 1}</span>
       <Card.Header>
         <div className="c-header">
           <RenderImg roleName={roleName} />
           <div className="name-role">
             <h5>
-              {item["Name"]}({index})
+              {item["Name"]}({index + 1})
             </h5>
             <div>{roleName}</div>
           </div>
@@ -43,10 +45,12 @@ function Character({ item, index }) {
       <ListGroup className="list-group-flush">
         <ListGroupItem>转生次数: {item["ResetLife"]}</ListGroupItem>
         <ListGroupItem>当前等级: {item["cLevel"]}</ListGroupItem>
-        <ListGroupItem>力量: {item["Strength"]}</ListGroupItem>
-        <ListGroupItem>敏捷: {item["Dexterity"]}</ListGroupItem>
-        <ListGroupItem>体力: {item["Vitality"]}</ListGroupItem>
-        <ListGroupItem>智力: {item["Energy"]}</ListGroupItem>
+        <ListGroupItem>
+          <span style={{ fontSize: "12px", opacity: 0.8 }}>
+            力{item["Strength"]}/敏{item["Dexterity"]}/:{item["Vitality"]}/智
+            {item["Energy"]}
+          </span>
+        </ListGroupItem>
       </ListGroup>
     </Card>
   );

@@ -1,6 +1,5 @@
-import Button from "react-bootstrap/Button";
 import Layout from "../components/Layout";
-import { Form, Alert } from "react-bootstrap";
+import { Form, Alert, Button } from "react-bootstrap";
 import { useState } from "react";
 import { useRouter } from "next/router";
 import axios from "axios";
@@ -15,6 +14,7 @@ export default function RegisterPage() {
   return (
     <Layout>
       <h5 className="mb-3">用户注册</h5>
+      <hr />
       {message && <Alert variant="danger">{message}</Alert>}
       <Form>
         <Form.Group className="mb-3" controlId="formBasicEmail">
@@ -78,7 +78,7 @@ export default function RegisterPage() {
               .then((res) => {
                 // localStorage.setItem("user", JSON.stringify(res.data));
                 alert("注册成功");
-                router.replace("/login-page");
+                router.replace("/LoginPage");
               })
               .catch((err) => {
                 console.log(err.response.data);

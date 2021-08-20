@@ -1,14 +1,18 @@
-import Head from "next/head";
-import Image from "next/image";
-import styles from "../styles/Home.module.css";
 import Layout from "../components/Layout";
 
-export default function Home() {
+const qqLink = `https://qm.qq.com/cgi-bin/qm/qr?k=tu3jYFHFGwpHNddGX8gQ_Skk-Qr1B51C&jump_from=webapi`;
+export default function IndexPage() {
   return (
     <Layout>
       <h5>游戏特色</h5>
       <ul>
         <li>游戏官网: http://mu.yoursoups.com</li>
+        <li>
+          QQ群:{" "}
+          <a target="_blank" href={qqLink} rel="noreferrer">
+            835949656
+          </a>
+        </li>
         <li>该私服基于好易全1.03H</li>
         <li>出生送1000点, 升级每级50点</li>
         <li>经验5000倍, 大师经验1000倍</li>
