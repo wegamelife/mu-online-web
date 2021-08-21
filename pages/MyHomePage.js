@@ -6,6 +6,7 @@ import { UserContext } from "./_app";
 import { useRouter } from "next/router";
 import axios from "axios";
 import Image from "next/image";
+import RoleCodeMap from "../lib/RoleCodeMap";
 
 export default function MyHomePage() {
   const { user, updateUser } = useContext(UserContext);
@@ -51,54 +52,36 @@ export default function MyHomePage() {
   );
 }
 
-export function getRoleNameByCode(code) {
-  let rs = "未知";
-  switch (code) {
-    case 0:
-      rs = "魔法师";
-      break;
-    case 1:
-      rs = "魔导师";
-      break;
-    case 16:
-      rs = "剑士";
-      break;
-    case 19:
-      rs = "神骑士";
-      break;
-    case 48:
-      rs = "魔剑士";
-      break;
-    case 81:
-      rs = "巫师";
-      break;
-  }
-
-  return rs;
-}
-
 export function RenderImg({ roleName }) {
   let imgSrc = "/mofashi.jpg";
 
   switch (roleName) {
-    case "魔法师":
-    case "魔导师":
+    case "法师":
+    case "魔导士":
+    case "神导师":
       imgSrc = "/mofashi.jpg";
       break;
     case "剑士":
+    case "骑士":
     case "神骑士":
       imgSrc = "/jianshi.jpg";
       break;
     case "弓箭手":
+    case "圣射手":
+    case "神射手":
       imgSrc = "/gongjianshou.jpg";
       break;
-    case "魔剑士":
-      imgSrc = "/mojianshi.jpg";
-      break;
-    case "巫师":
+    case "召唤师":
+    case "圣巫师":
+    case "神巫师":
       imgSrc = "/zhaohuanshi.jpg";
       break;
+    case "魔剑士":
+    case "剑圣":
+      imgSrc = "/mojianshi.jpg";
+      break;
     case "圣导师":
+    case "祭师":
       imgSrc = "/shendaoshi.jpg";
       break;
   }
@@ -120,7 +103,7 @@ function Character({ item }) {
   const totalPoints =
     item["ResetLife"] * 600 + 1000 + item["cLevel"] * 50 + 30 * 4;
 
-  const roleName = getRoleNameByCode(item["Class"]);
+  const roleName = RoleCodeMap[item["Class"]];
 
   return (
     <Card style={{ width: "100%" }} key={item["Name"]}>
@@ -279,6 +262,7 @@ function Character({ item }) {
 
         <Button
           variant="outline-primary"
+          style={{ marginRight: ".5rem" }}
           onClick={() => {
             if (LevelUpPoint < 0) {
               setMessage("剩余点数不能为负数");
@@ -313,6 +297,35 @@ function Character({ item }) {
           }}
         >
           {loading2 ? "Loading..." : "加点"}
+        </Button>
+        <Button
+          variant="outline-primary"
+          onClick={() => {
+            if (![1, 17, 33, 48, 64, 81].includes(item["Class"])) {
+              setMessage("只有二转职业才能进行快速三转");
+              return;
+            }
+
+            setLoading2(true);
+            axios
+              .get(`/api/users/zhuanZhi3?username=${item["AccountID"]}&characterName=${item["Name"]}`)
+              .then((r) => {
+                console.log(r.data);
+                setMessage("成功3次转职");
+                setTimeout(() => {
+                  location.reload();
+                }, 1000);
+              })
+              .catch((err) => {
+                console.log(err.response.data);
+                setMessage(err.response.data.message);
+              })
+              .finally(() => {
+                setLoading2(false);
+              });
+          }}
+        >
+          {loading2 ? "Loading..." : "转职"}
         </Button>
       </Card.Body>
     </Card>
