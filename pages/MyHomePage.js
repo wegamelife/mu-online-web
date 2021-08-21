@@ -1,6 +1,6 @@
 import Button from "react-bootstrap/Button";
 import Layout from "../components/Layout";
-import { Alert, Card, ListGroup, ListGroupItem } from "react-bootstrap";
+import { Alert, Card, ListGroup, ListGroupItem, Form } from "react-bootstrap";
 import { useState, useContext, useEffect } from "react";
 import { UserContext } from "./_app";
 import { useRouter } from "next/router";
@@ -11,6 +11,8 @@ export default function MyHomePage() {
   const { user, updateUser } = useContext(UserContext);
   const router = useRouter();
   const [characters, setCharacters] = useState([]);
+
+  const memb___id = user ? user["memb___id"] : 1;
 
   useEffect(() => {
     if (!user) {
@@ -26,8 +28,7 @@ export default function MyHomePage() {
     axios.get(`/api/users/${user.memb___id}`).then((r) => {
       updateUser(r.data);
     });
-
-  }, [user]);
+  }, [memb___id]);
 
   if (!user) {
     return (
@@ -110,6 +111,14 @@ function Character({ item }) {
   const [loading1, setLoading1] = useState(false);
   const [loading2, setLoading2] = useState(false);
   const [loading3, setLoading3] = useState(false);
+  const [Strength, setStrength] = useState(item["Strength"]);
+  const [Dexterity, setDexterit] = useState(item["Dexterity"]);
+  const [Vitality, setVitality] = useState(item["Vitality"]);
+  const [Energy, setEnergy] = useState(item["Energy"]);
+  const [LevelUpPoint, setLevelUpPoint] = useState(item["LevelUpPoint"]);
+
+  const totalPoints =
+    item["ResetLife"] * 600 + 1000 + item["cLevel"] * 50 + 30 * 4;
 
   const roleName = getRoleNameByCode(item["Class"]);
 
@@ -127,11 +136,75 @@ function Character({ item }) {
       <ListGroup className="list-group-flush">
         <ListGroupItem>转生次数: {item["ResetLife"]}</ListGroupItem>
         <ListGroupItem>当前等级: {item["cLevel"]}</ListGroupItem>
-        <ListGroupItem>剩余点数: {item["LevelUpPoint"]}</ListGroupItem>
-        <ListGroupItem>力量: {item["Strength"]}</ListGroupItem>
-        <ListGroupItem>敏捷: {item["Dexterity"]}</ListGroupItem>
-        <ListGroupItem>体力: {item["Vitality"]}</ListGroupItem>
-        <ListGroupItem>智力: {item["Energy"]}</ListGroupItem>
+        <ListGroupItem>剩余点数: {LevelUpPoint}</ListGroupItem>
+        <ListGroupItem>
+          <div className="add-points-row">
+            <span>力量</span>
+            <Form.Control
+              type="text"
+              placeholder="力量"
+              value={Strength}
+              onChange={(e) => {
+                const v = e.target.value;
+                setStrength(v);
+                setLevelUpPoint((pre) => {
+                  return totalPoints - v - Dexterity - Vitality - Energy;
+                });
+              }}
+            />
+          </div>
+        </ListGroupItem>
+        <ListGroupItem>
+          <div className="add-points-row">
+            <span>敏捷</span>
+            <Form.Control
+              type="text"
+              placeholder="敏捷"
+              value={Dexterity}
+              onChange={(e) => {
+                const v = e.target.value;
+                setDexterit(v);
+                setLevelUpPoint((pre) => {
+                  return totalPoints - Strength - v - Vitality - Energy;
+                });
+              }}
+            />
+          </div>
+        </ListGroupItem>
+        <ListGroupItem>
+          <div className="add-points-row">
+            <span>体力</span>
+            <Form.Control
+              type="text"
+              placeholder="体力"
+              value={Vitality}
+              onChange={(e) => {
+                const v = e.target.value;
+                setVitality(v);
+                setLevelUpPoint((pre) => {
+                  return totalPoints - Strength - Dexterity - v - Energy;
+                });
+              }}
+            />
+          </div>
+        </ListGroupItem>
+        <ListGroupItem>
+          <div className="add-points-row">
+            <span>智力</span>
+            <Form.Control
+              type="text"
+              placeholder="智力"
+              value={Energy}
+              onChange={(e) => {
+                const v = e.target.value;
+                setEnergy(v);
+                setLevelUpPoint((pre) => {
+                  return totalPoints - Strength - Dexterity - Vitality - v;
+                });
+              }}
+            />
+          </div>
+        </ListGroupItem>
       </ListGroup>
       <Card.Body>
         {message && <Alert variant="danger">{message}</Alert>}
@@ -180,32 +253,6 @@ function Character({ item }) {
           variant="outline-primary"
           style={{ marginRight: ".5rem" }}
           onClick={() => {
-            setLoading2(true);
-            axios
-              .get(
-                `/api/users/autoAddPoints?username=${item["AccountID"]}&characterName=${item["Name"]}`
-              )
-              .then((r) => {
-                console.log(r.data);
-                setMessage("自动加点成功");
-                setTimeout(() => {
-                  location.reload();
-                }, 1000);
-              })
-              .catch((err) => {
-                console.log(err.response.data);
-                setMessage(err.response.data.message);
-              })
-              .finally(() => {
-                setLoading2(false);
-              });
-          }}
-        >
-          {loading2 ? "Loading..." : "自动加点"}
-        </Button>
-        <Button
-          variant="outline-primary"
-          onClick={() => {
             setLoading3(true);
             axios
               .get(
@@ -228,6 +275,44 @@ function Character({ item }) {
           }}
         >
           {loading3 ? "Loading..." : "洗点"}
+        </Button>
+
+        <Button
+          variant="outline-primary"
+          onClick={() => {
+            if (LevelUpPoint < 0) {
+              setMessage("剩余点数不能为负数");
+              return;
+            }
+
+            setLoading2(true);
+            axios
+              .post(`/api/users/addPoints`, {
+                username: item["AccountID"],
+                characterName: item["Name"],
+                Strength: Strength,
+                Dexterity: Dexterity,
+                Vitality: Vitality,
+                Energy: Energy,
+                LevelUpPoint: LevelUpPoint,
+              })
+              .then((r) => {
+                console.log(r.data);
+                setMessage("加点成功");
+                setTimeout(() => {
+                  location.reload();
+                }, 1000);
+              })
+              .catch((err) => {
+                console.log(err.response.data);
+                setMessage(err.response.data.message);
+              })
+              .finally(() => {
+                setLoading2(false);
+              });
+          }}
+        >
+          {loading2 ? "Loading..." : "加点"}
         </Button>
       </Card.Body>
     </Card>

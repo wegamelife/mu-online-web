@@ -29,15 +29,13 @@ export default function RankPage() {
 function Character({ item, index }) {
   const roleName = getRoleNameByCode(item["Class"]);
   return (
-    <Card style={{ width: "20rem" }} key={item["Name"]} className="rank-card">
+    <Card style={{ width: "100%" }} key={item["Name"]} className="rank-card">
       <span className="index">{index + 1}</span>
       <Card.Header>
         <div className="c-header">
           <RenderImg roleName={roleName} />
           <div className="name-role">
-            <h5>
-              {item["Name"]}({index + 1})
-            </h5>
+            <h5>{item["Name"]}</h5>
             <div>{roleName}</div>
           </div>
         </div>
@@ -47,7 +45,7 @@ function Character({ item, index }) {
         <ListGroupItem>当前等级: {item["cLevel"]}</ListGroupItem>
         <ListGroupItem>
           <span style={{ fontSize: "12px", opacity: 0.8 }}>
-            力{item["Strength"]}/敏{item["Dexterity"]}/:{item["Vitality"]}/智
+            力{item["Strength"]}/ 敏{item["Dexterity"]}/ 体{item["Vitality"]}/ 智
             {item["Energy"]}
           </span>
         </ListGroupItem>
