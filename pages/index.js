@@ -24,6 +24,7 @@ export default function IndexPage() {
         <li>所有物品合成概率统一设置为 80%</li>
         <li>装备交易无限制</li>
         <li>练级地点, 勇者大陆东门, 古战场门口</li>
+        <li>三转在网站上进行转职</li>
       </ul>
 
       <h5>X商店</h5>
@@ -34,7 +35,11 @@ export default function IndexPage() {
 
       <h5>积分</h5>
       <ul>
-        <li>玛雅, 创造 买商店里面,一个100积分</li>
+        <li>创造宝石 一个100积分</li>
+        <li>玛雅之石 一个100积分</li>
+        <li>生命宝石 一个100积分</li>
+        <li>洛克之羽 一个100积分</li>
+        <li>守护宝石 一个1000积分</li>
       </ul>
 
       <h5>魔王困顿</h5>
@@ -42,6 +47,11 @@ export default function IndexPage() {
         <li>魔王困顿 5 分钟刷新一次</li>
         <li>刷新地点古战场, 亚特兰蒂斯, 天空之城, 每个地方刷新 4 只</li>
         <li>掉落所有套装物品</li>
+      </ul>
+
+      <h5>冰霜蜘蛛</h5>
+      <ul>
+        <li>爆所有高等级的装备, 包括380/400</li>
       </ul>
 
       <h5>常用操作</h5>
@@ -55,7 +65,6 @@ export default function IndexPage() {
           进游戏自己通过命令加点
         </li>
         <li>积分兑换, 玛雅,创造,洛克之羽, 卖商店, 每个兑换 100 点积分</li>
-        <li>X商店出售宝箱以及常用物品, 使用积分消费</li>
       </ul>
     </Layout>
   );

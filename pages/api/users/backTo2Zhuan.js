@@ -1,4 +1,4 @@
-import { clearPoints } from "../../../lib";
+import { backTo2Zhuan } from "../../../lib";
 
 export default async function handler(req, res) {
   if (req.method !== "POST") {
@@ -11,10 +11,10 @@ export default async function handler(req, res) {
   let result;
 
   try {
-    result = await clearPoints(username, characterName);
+    result = await backTo2Zhuan(username, characterName);
     if (!result) {
       res.status(500).send({
-        message: "Unknow error",
+        message: "Unknown error",
       });
     } else {
       res.json(result);

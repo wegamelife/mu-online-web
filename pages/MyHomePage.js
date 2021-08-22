@@ -28,6 +28,7 @@ export default function MyHomePage() {
 
     axios.get(`/api/users/${user.memb___id}`).then((r) => {
       updateUser(r.data);
+      localStorage.setItem("user", JSON.stringify(r.data));
     });
   }, [memb___id]);
 
@@ -210,9 +211,10 @@ function Character({ item }) {
 
             setLoading1(true);
             axios
-              .get(
-                `/api/users/resetLife?username=${item["AccountID"]}&characterName=${item["Name"]}`
-              )
+              .post(`/api/users/resetLife`, {
+                username: item["AccountID"],
+                characterName: item["Name"],
+              })
               .then((r) => {
                 console.log(r.data);
                 setMessage("成功转职");
@@ -238,9 +240,10 @@ function Character({ item }) {
           onClick={() => {
             setLoading3(true);
             axios
-              .get(
-                `/api/users/clearPoints?username=${item["AccountID"]}&characterName=${item["Name"]}`
-              )
+              .post(`/api/users/clearPoints`, {
+                username: item["AccountID"],
+                characterName: item["Name"],
+              })
               .then((r) => {
                 console.log(r.data);
                 setMessage("洗点成功");
@@ -298,9 +301,18 @@ function Character({ item }) {
         >
           {loading2 ? "Loading..." : "加点"}
         </Button>
+      </Card.Body>
+      <Card.Body>
         <Button
           variant="outline-primary"
+          style={{ marginRight: ".5rem" }}
           onClick={() => {
+            const _confirm = confirm("确定要转职?");
+
+            if (!_confirm) {
+              return;
+            }
+
             if (![1, 17, 33, 48, 64, 81].includes(item["Class"])) {
               setMessage("只有二转职业才能进行快速三转");
               return;
@@ -308,7 +320,10 @@ function Character({ item }) {
 
             setLoading2(true);
             axios
-              .get(`/api/users/zhuanZhi3?username=${item["AccountID"]}&characterName=${item["Name"]}`)
+              .post(`/api/users/zhuanZhi3`, {
+                username: item["AccountID"],
+                characterName: item["Name"],
+              })
               .then((r) => {
                 console.log(r.data);
                 setMessage("成功3次转职");
@@ -326,6 +341,44 @@ function Character({ item }) {
           }}
         >
           {loading2 ? "Loading..." : "转职"}
+        </Button>
+        <Button
+          variant="outline-primary"
+          onClick={() => {
+            const _confirm = confirm("你确定要恢复到二转吗?");
+
+            if (!_confirm) {
+              return;
+            }
+
+            if (![3, 19, 35, 83, 50, 66].includes(item["Class"])) {
+              setMessage("貌似你还没有三转");
+              return;
+            }
+
+            setLoading2(true);
+            axios
+              .post(`/api/users/backTo2Zhuan`, {
+                username: item["AccountID"],
+                characterName: item["Name"],
+              })
+              .then((r) => {
+                console.log(r.data);
+                setMessage("成功恢复到二转");
+                setTimeout(() => {
+                  location.reload();
+                }, 1000);
+              })
+              .catch((err) => {
+                console.log(err.response.data);
+                setMessage(err.response.data.message);
+              })
+              .finally(() => {
+                setLoading2(false);
+              });
+          }}
+        >
+          {loading2 ? "Loading..." : "恢复两转"}
         </Button>
       </Card.Body>
     </Card>
