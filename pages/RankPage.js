@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import { RenderImg } from "./MyHomePage";
 import RoleCodeMap from "../lib/RoleCodeMap";
 import axios from "axios";
+import { getTotalPoints } from "../lib/utils";
 
 export default function RankPage() {
   const [users, setUsers] = useState([]);
@@ -58,6 +59,8 @@ export default function RankPage() {
 
 function Character({ item, index, online }) {
   const roleName = RoleCodeMap[item["Class"]];
+  const totalPoints = getTotalPoints(item);
+
   return (
     <Card style={{ width: "100%" }} key={item["Name"]} className="rank-card">
       <Card.Header>
@@ -103,13 +106,9 @@ function Character({ item, index, online }) {
       </Card.Header>
       <ListGroup className="list-group-flush">
         <ListGroupItem>转生次数: {item["ResetLife"]}</ListGroupItem>
+        <ListGroupItem>大师等级: {item["MASTER_LEVEL"]}</ListGroupItem>
         <ListGroupItem>当前等级: {item["cLevel"]}</ListGroupItem>
-        <ListGroupItem>
-          <span style={{ fontSize: "12px", opacity: 0.8 }}>
-            力{item["Strength"]}/ 敏{item["Dexterity"]}/ 体{item["Vitality"]}/
-            智{item["Energy"]}
-          </span>
-        </ListGroupItem>
+        <ListGroupItem>总共点数: {totalPoints}</ListGroupItem>
       </ListGroup>
     </Card>
   );

@@ -7,15 +7,8 @@ export default async function handler(req, res) {
     });
   }
 
-  const {
-    username,
-    characterName,
-    Strength,
-    Dexterity,
-    Vitality,
-    Energy,
-    LevelUpPoint,
-  } = req.body;
+  const { username, characterName, Strength, Dexterity, Vitality, Energy } =
+    req.body;
 
   let result;
 
@@ -26,8 +19,7 @@ export default async function handler(req, res) {
       Strength,
       Dexterity,
       Vitality,
-      Energy,
-      LevelUpPoint
+      Energy
     );
     if (!result) {
       res.status(500).send({

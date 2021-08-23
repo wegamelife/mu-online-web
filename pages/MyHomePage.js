@@ -26,7 +26,7 @@ export default function MyHomePage() {
         setCharacters(r.data);
       });
 
-    axios.get(`/api/users/${user.memb___id}`).then((r) => {
+    axios.get(`/api/user/getUser?username=${user.memb___id}`).then((r) => {
       updateUser(r.data);
       localStorage.setItem("user", JSON.stringify(r.data));
     });
@@ -92,9 +92,7 @@ export function RenderImg({ roleName }) {
 
 function Character({ item }) {
   const [message, setMessage] = useState("");
-  const [loading1, setLoading1] = useState(false);
-  const [loading2, setLoading2] = useState(false);
-  const [loading3, setLoading3] = useState(false);
+  const [loading, setLoading] = useState(false);
   const [Strength, setStrength] = useState(item["Strength"]);
   const [Dexterity, setDexterit] = useState(item["Dexterity"]);
   const [Vitality, setVitality] = useState(item["Vitality"]);
@@ -193,9 +191,14 @@ function Character({ item }) {
       <Card.Body>
         {message && <Alert variant="danger">{message}</Alert>}
         <Button
+          disabled={loading}
           variant="outline-primary"
           style={{ marginRight: ".5rem" }}
           onClick={() => {
+            if (loading) {
+              return;
+            }
+
             const resetLife = item["ResetLife"];
             const cLevel = item["cLevel"];
 
@@ -209,7 +212,7 @@ function Character({ item }) {
               return;
             }
 
-            setLoading1(true);
+            setLoading(true);
             axios
               .post(`/api/users/resetLife`, {
                 username: item["AccountID"],
@@ -220,25 +223,30 @@ function Character({ item }) {
                 setMessage("成功转职");
                 setTimeout(() => {
                   location.reload();
-                }, 1000);
+                }, 200);
               })
               .catch((err) => {
                 console.log(err.response.data);
                 setMessage(err.response.data.message);
               })
               .finally(() => {
-                setLoading1(false);
+                setLoading(false);
               });
           }}
         >
-          {loading1 ? "Loading..." : "转生"}
+          {loading ? "Loading..." : "转生"}
         </Button>
 
         <Button
+          disabled={loading}
           variant="outline-primary"
           style={{ marginRight: ".5rem" }}
           onClick={() => {
-            setLoading3(true);
+            if (loading) {
+              return;
+            }
+
+            setLoading(true);
             axios
               .post(`/api/users/clearPoints`, {
                 username: item["AccountID"],
@@ -249,30 +257,35 @@ function Character({ item }) {
                 setMessage("洗点成功");
                 setTimeout(() => {
                   location.reload();
-                }, 1000);
+                }, 500);
               })
               .catch((err) => {
                 console.log(err.response.data);
                 setMessage(err.response.data.message);
               })
               .finally(() => {
-                setLoading3(false);
+                setLoading(false);
               });
           }}
         >
-          {loading3 ? "Loading..." : "洗点"}
+          {loading ? "Loading..." : "洗点"}
         </Button>
 
         <Button
+          disabled={loading}
           variant="outline-primary"
           style={{ marginRight: ".5rem" }}
           onClick={() => {
+            if (loading) {
+              return;
+            }
+
             if (LevelUpPoint < 0) {
               setMessage("剩余点数不能为负数");
               return;
             }
 
-            setLoading2(true);
+            setLoading(true);
             axios
               .post(`/api/users/addPoints`, {
                 username: item["AccountID"],
@@ -281,32 +294,36 @@ function Character({ item }) {
                 Dexterity: Dexterity,
                 Vitality: Vitality,
                 Energy: Energy,
-                LevelUpPoint: LevelUpPoint,
               })
               .then((r) => {
                 console.log(r.data);
                 setMessage("加点成功");
                 setTimeout(() => {
                   location.reload();
-                }, 1000);
+                }, 500);
               })
               .catch((err) => {
                 console.log(err.response.data);
                 setMessage(err.response.data.message);
               })
               .finally(() => {
-                setLoading2(false);
+                setLoading(false);
               });
           }}
         >
-          {loading2 ? "Loading..." : "加点"}
+          {loading ? "Loading..." : "加点"}
         </Button>
       </Card.Body>
       <Card.Body>
         <Button
+          disabled={loading}
           variant="outline-primary"
           style={{ marginRight: ".5rem" }}
           onClick={() => {
+            if (loading) {
+              return;
+            }
+
             const _confirm = confirm("确定要转职?");
 
             if (!_confirm) {
@@ -318,7 +335,7 @@ function Character({ item }) {
               return;
             }
 
-            setLoading2(true);
+            setLoading(true);
             axios
               .post(`/api/users/zhuanZhi3`, {
                 username: item["AccountID"],
@@ -329,22 +346,26 @@ function Character({ item }) {
                 setMessage("成功3次转职");
                 setTimeout(() => {
                   location.reload();
-                }, 1000);
+                }, 500);
               })
               .catch((err) => {
                 console.log(err.response.data);
                 setMessage(err.response.data.message);
               })
               .finally(() => {
-                setLoading2(false);
+                setLoading(false);
               });
           }}
         >
-          {loading2 ? "Loading..." : "转职"}
+          {loading ? "Loading..." : "转职"}
         </Button>
         <Button
+          disabled={loading}
           variant="outline-primary"
           onClick={() => {
+            if (loading) {
+              return;
+            }
             const _confirm = confirm("你确定要恢复到二转吗?");
 
             if (!_confirm) {
@@ -356,7 +377,7 @@ function Character({ item }) {
               return;
             }
 
-            setLoading2(true);
+            setLoading(true);
             axios
               .post(`/api/users/backTo2Zhuan`, {
                 username: item["AccountID"],
@@ -367,18 +388,18 @@ function Character({ item }) {
                 setMessage("成功恢复到二转");
                 setTimeout(() => {
                   location.reload();
-                }, 1000);
+                }, 500);
               })
               .catch((err) => {
                 console.log(err.response.data);
                 setMessage(err.response.data.message);
               })
               .finally(() => {
-                setLoading2(false);
+                setLoading(false);
               });
           }}
         >
-          {loading2 ? "Loading..." : "恢复两转"}
+          {loading ? "Loading..." : "恢复两转"}
         </Button>
       </Card.Body>
     </Card>
