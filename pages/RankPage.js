@@ -8,7 +8,7 @@ import { getTotalPoints } from "../lib/utils";
 
 export default function RankPage() {
   const [users, setUsers] = useState([]);
-  const [onlineUsers, setOnlineUsers] = useState([]);
+  const [userOnlineStatus, setUserOnlineStatus] = useState([]);
 
   useEffect(() => {
     const url = `/api/users/getCharacters`;
@@ -23,24 +23,26 @@ export default function RankPage() {
       });
 
     axios
-      .get(`/api/users/getOnlineUsers`)
+      .get(`/api/users/getUserOnlineStatus`)
       .then((res) => {
-        setOnlineUsers(res.data);
+        setUserOnlineStatus(res.data);
       })
       .catch((err) => {
         console.log(err.response.data);
       });
   }, []);
 
-  const onlineUserIds = onlineUsers.map((it) => it["memb___id"]);
+  const onlineUserIds = userOnlineStatus
+    .filter((it) => it.ConnectStat === 1)
+    .map((it) => it["memb___id"]);
 
   return (
     <Layout>
       <h5
         className="mb-3"
-        title="根据玩家转生次数, 相同转生次数的按照最早完成该次数的优先"
+        title="根据玩家转生次数, 大师等级, 普通等级, 完成转数时间, 相同转生次数的按照最早完成该次数的优先"
       >
-        玩家排行榜
+        玩家排行榜({onlineUserIds.length}/{userOnlineStatus.length})
       </h5>
       <hr />
       <div className="rank">

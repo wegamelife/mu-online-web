@@ -18,6 +18,12 @@ hr {
   }
 }
 
+@media (max-width: 768px) {
+  .characters {
+    grid-template-columns: 1fr;
+  }
+}
+
 .c-header {
   display: flex;
   align-items: center;
@@ -37,6 +43,12 @@ hr {
 @media (max-width: 1024px) {
   .rank {
     grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .rank {
+    grid-template-columns: 1fr;
   }
 }
 
@@ -62,4 +74,3 @@ hr {
   display: inline-block;
   width: 50px;
 }
-
