@@ -44,7 +44,6 @@ export default function RankPage() {
       >
         玩家排行榜({onlineUserIds.length}/{userOnlineStatus.length})
       </h5>
-      <hr />
       <div className="rank">
         {users.map((item, index) => (
           <Character
