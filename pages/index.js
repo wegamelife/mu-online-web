@@ -1,11 +1,12 @@
 import Layout from "../components/Layout";
+import Link from "next/link";
 
 const qqLink = `https://qm.qq.com/cgi-bin/qm/qr?k=tu3jYFHFGwpHNddGX8gQ_Skk-Qr1B51C&jump_from=webapi`;
 export default function IndexPage() {
   return (
     <Layout>
       <div className="p-4 mb-4 bg-white bg-jump">
-        <div className="overlay"></div>
+        <div className="overlay" />
         <div className="container-fluid">
           <h1 className="display-5 fw-bold">一个有脾气的奇迹私服</h1>
           <p className="fs-4">
@@ -13,17 +14,18 @@ export default function IndexPage() {
             鄙视那些商业服的各种套路, 极度讨厌他们的行为,
             所有玩家需求群内投票决定. 目标只有一个, 玩的爽才是真的好私服.
           </p>
-          <a className="btn btn-primary btn-lg" href="/RegisterPage">
-            快速注册
-          </a>
-          <a
-            className="btn btn-outline-primary btn-lg ms-2"
-            href={qqLink}
-            target="_blank"
-            rel="noreferrer"
-          >
-            添加QQ群
-          </a>
+          <Link href="/RegisterPage">
+            <a className="btn btn-primary btn-lg">快速注册</a>
+          </Link>
+          <Link href={qqLink}>
+            <a
+              className="btn btn-outline-primary btn-lg ms-2"
+              target="_blank"
+              rel="noreferrer"
+            >
+              添加QQ群
+            </a>
+          </Link>
         </div>
       </div>
 
