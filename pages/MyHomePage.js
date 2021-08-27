@@ -26,7 +26,7 @@ export default function MyHomePage() {
         setCharacters(r.data);
       });
 
-    axios.get(`/api/user/getUser?username=${user.memb___id}`).then((r) => {
+    axios.get(`/api/users/getUser?username=${user.memb___id}`).then((r) => {
       updateUser(r.data);
       localStorage.setItem("user", JSON.stringify(r.data));
     });
