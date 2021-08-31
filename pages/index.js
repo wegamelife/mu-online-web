@@ -109,6 +109,30 @@ export default function IndexPage() {
           <li>+ 积分兑换, 玛雅,创造,洛克之羽, 卖商店, 每个兑换 100 点积分</li>
         </ul>
       </div>
+
+      <div className="mb-5 mt-4">
+        <h4>开源项目</h4>
+        <ul>
+          <li>
+            <a
+              href="https://github.com/buuug7/mu-login-app"
+              target="_blank"
+              rel="noreferrer"
+            >
+              土鳖私服登录器源码
+            </a>
+          </li>
+          <li>
+            <a
+              href="https://github.com/buuug7/mu-online-web"
+              target="_blank"
+              rel="noreferrer"
+            >
+              土鳖私服网站源码
+            </a>
+          </li>
+        </ul>
+      </div>
     </Layout>
   );
 }
