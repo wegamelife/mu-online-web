@@ -65,12 +65,12 @@ function Character({ item, index, online }) {
   return (
     <Card style={{ width: "100%" }} key={item["Name"]} className="rank-card">
       <Card.Header>
-        <div
-          className={index < 3 ? "c-header rank-card-top-style" : "c-header"}
-        >
+        <div className="c-header">
           <RenderImg roleName={roleName} />
           <div className="name-role">
-            <h5>{item["Name"]}</h5>
+            <h5 className={index < 3 ? "rank-card-top-style" : ""}>
+              {item["Name"]}
+            </h5>
             <div>
               <svg
                 xmlns="http://www.w3.org/2000/svg"

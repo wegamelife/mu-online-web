@@ -34,4 +34,6 @@ yarn-error.log*
 .vercel
 
 .idea
-private
+doc
+public/client-updates/*
+public/json/*
