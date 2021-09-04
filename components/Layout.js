@@ -13,7 +13,7 @@ export default function Layout({ children, home }) {
         <meta name="description" content="土鳖奇迹" />
       </Head>
       <header>
-        <Navbar variant="dark" bg="primary" expand="md">
+        <Navbar variant="light" bg="white" expand="md" fixed="top">
           <Container>
             <Navbar.Brand href="/">土鳖奇迹</Navbar.Brand>
             <Navbar.Toggle aria-controls="navbarScroll" />
@@ -50,7 +50,7 @@ export default function Layout({ children, home }) {
           </Container>
         </Navbar>
       </header>
-      <main>
+      <main style={{marginTop: '5rem'}}>
         <Container className="mt-4">{children}</Container>
       </main>
     </div>

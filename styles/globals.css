@@ -1,5 +1,9 @@
 body {
-  background-color: #f7f7f7;
+  background-color: #faf8fb;
+}
+
+header nav{
+  box-shadow: 0 0 8px 0 rgb(86 61 124 / 13%);
 }
 
 hr {
@@ -33,7 +37,7 @@ hr {
 
 .index-feature {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
   gap: 1rem;
 }
 
