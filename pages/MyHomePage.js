@@ -87,7 +87,7 @@ export function RenderImg({ roleName }) {
       break;
   }
 
-  return <Image src={imgSrc} width={88} height={88} alt="icon" />;
+  return <Image src={imgSrc} width={80} height={80} alt="icon" />;
 }
 
 function Character({ item }) {

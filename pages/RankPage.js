@@ -38,11 +38,13 @@ export default function RankPage() {
 
   return (
     <Layout>
-      <h5
-        className="mb-3"
-        title="根据玩家转生次数, 大师等级, 普通等级, 完成转数时间, 相同转生次数的按照最早完成该次数的优先"
-      >
-        玩家排行榜({onlineUserIds.length}/{userOnlineStatus.length})
+      <h5 className="mb-3 title-1">
+        <span title="根据玩家转生次数, 大师等级, 普通等级, 完成转数时间, 相同转生次数的按照最早完成该次数的优先">
+          玩家排行榜
+        </span>
+        <span className="text-muted">
+          {onlineUserIds.length}/{userOnlineStatus.length}
+        </span>
       </h5>
       <div className="rank">
         {users.map((item, index) => (

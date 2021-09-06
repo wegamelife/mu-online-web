@@ -74,6 +74,11 @@ hr {
   text-align: center;
 }
 
+.title-1 {
+  display: flex;
+  justify-content: space-between;
+}
+
 .characters {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;

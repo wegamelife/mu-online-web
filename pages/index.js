@@ -10,9 +10,9 @@ export default function IndexPage() {
         <div className="container-fluid">
           <h1 className="display-5 fw-bold">一个有脾气的奇迹私服</h1>
           <p className="fs-4">
-            基于好易全1.03H, 全职业平衡, 各职业二连击, 经典设置, 长久耐玩,
-            鄙视那些商业服的各种套路, 极度讨厌他们的行为,
-            所有玩家需求群内投票决定. 目标只有一个, 玩的爽才是真的好私服.
+            基于好易全 <strong>1.03H+</strong>, 全职业平衡, 各职业二连击,
+            经典设置, 长久耐玩, 鄙视那些商业服的各种套路,
+            所有玩家需求群内投票决定, 总之让大家玩的愉快就好.
           </p>
           <Link href="/RegisterPage">
             <a className="btn btn-primary btn-lg">快速注册</a>
@@ -56,6 +56,7 @@ export default function IndexPage() {
             <li>首饰掉落随机+5到+13</li>
             <li>生命宝石可追加到+28</li>
             <li>玛雅创造生命守护的掉落率非常高</li>
+            <li>古战场加入的怪物生命值提升 5 倍</li>
           </ul>
         </div>
 
@@ -84,6 +85,7 @@ export default function IndexPage() {
             <li>强化的恶魔跟天使</li>
             <li>所有职业翅膀 2 代翅膀</li>
             <li>所有职业翅膀 3 代翅膀</li>
+            <li>纪念指环</li>
           </ul>
         </div>
 
@@ -91,11 +93,11 @@ export default function IndexPage() {
           <div className="overlay" />
           <h5>积分</h5>
           <ul>
-            <li>创造宝石 一个20积分</li>
-            <li>玛雅之石 一个10积分</li>
-            <li>生命宝石 一个10积分</li>
-            <li>洛克之羽 一个10积分</li>
-            <li>守护宝石 一个100积分</li>
+            <li>创造宝石 一个 20 积分</li>
+            <li>玛雅之石 一个 10 积分</li>
+            <li>生命宝石 一个 10 积分</li>
+            <li>洛克之羽 一个 10 积分</li>
+            <li>守护宝石 一个 100 积分</li>
           </ul>
         </div>
       </div>
@@ -103,10 +105,11 @@ export default function IndexPage() {
       <div className="mb-5 mt-4">
         <h4>常用操作</h4>
         <ul>
-          <li>+ 在线加点 `/加力量 32767`, 最大限制 32767</li>
-          <li>+ 在线洗红 `/洗红`</li>
-          <li>+ 删除角色, 删除战盟, 请输入 7 个 1</li>
-          <li>+ 积分兑换, 玛雅,创造,洛克之羽, 卖商店, 每个兑换 100 点积分</li>
+          <li>在线加点 `/加力量 32767`, 最大限制 32767</li>
+          <li>在线洗红 `/洗红`</li>
+          <li>删除角色, 删除战盟, 请输入 7 个 1</li>
+          <li>积分兑换, 玛雅, 创造, 洛克之羽, 卖商店, 每个兑换 100 点积分</li>
+          <li>批量兑换积分找勇者大陆守卫</li>
         </ul>
       </div>
 
