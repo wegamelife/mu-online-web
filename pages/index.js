@@ -34,15 +34,16 @@ export default function IndexPage() {
           <div className="overlay" />
           <h5>基本设定</h5>
           <ul>
-            <li>该私服基于好易全1.03H</li>
-            <li>自带登录器有F8右键挂机功能</li>
-            <li>有好的建议随时跟我说我修改</li>
-            <li>出生送1000点, 升级每级50点</li>
-            <li>经验5000倍, 大师经验1000倍</li>
+            <li>基于好易全1.03H+全扩展</li>
+            <li>自带登录器有F8右键挂机功能, F7一键连击</li>
+            <li>经验2000倍, 大师经验1000倍</li>
+            <li>出生不送点, 升级每级22点</li>
+            <li>角色最大等级4000级, 大师200级</li>
+            <li>总点数 22 * 4000 = 88000</li>
             <li>装备交易无限制</li>
             <li>练级地点, 勇者大陆东门, 古战场</li>
-
             <li>三转在网站上进行转职</li>
+            <li>有好的建议随时跟我说我修改</li>
           </ul>
         </div>
 
@@ -50,8 +51,6 @@ export default function IndexPage() {
           <div className="overlay" />
           <h5>其他设定</h5>
           <ul>
-            <li>设置 100 次转生, 每次转生 600 点, 400级转</li>
-            <li>总点数 `1000 + 100*600 + 400*50 = 81000`</li>
             <li>所有物品合成概率统一设置为 80%</li>
             <li>首饰掉落随机+5到+13</li>
             <li>生命宝石可追加到+28</li>
@@ -98,6 +97,19 @@ export default function IndexPage() {
             <li>生命宝石 一个 10 积分</li>
             <li>洛克之羽 一个 10 积分</li>
             <li>守护宝石 一个 100 积分</li>
+          </ul>
+        </div>
+
+        <div className="box">
+          <div className="overlay" />
+          <h5>新增套装</h5>
+          <ul>
+            <li>战士: 塞恩的愤怒 Thain's</li>
+            <li>战士: 塞恩的勇气 Thain's</li>
+            <li>魔法师: 尼古拉斯的审判 Nicolas's</li>
+            <li>魔法师: 尼古拉斯的信念 Nicolas's</li>
+            <li>圣导师: 塔拉夏的裁决 Tal Rasha's</li>
+            <li>圣导师: 塔拉夏的外袍 Tal Rasha's</li>
           </ul>
         </div>
       </div>

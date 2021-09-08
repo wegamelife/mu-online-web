@@ -64,9 +64,13 @@ function Character({ item, index, online }) {
   const roleName = RoleCodeMap[item["Class"]];
   const totalPoints = getTotalPoints(item);
 
+  const isMax = item["cLevel"] >= 4000 && item["MASTER_LEVEL"] >= 200;
+
   return (
     <Card style={{ width: "100%" }} key={item["Name"]} className="rank-card">
       <Card.Header>
+        {isMax && <span className="max">Max</span>}
+
         <div className="c-header">
           <RenderImg roleName={roleName} />
           <div className="name-role">
@@ -108,9 +112,10 @@ function Character({ item, index, online }) {
         </div>
       </Card.Header>
       <ListGroup className="list-group-flush">
-        <ListGroupItem>转生次数: {item["ResetLife"]}</ListGroupItem>
-        <ListGroupItem>大师等级: {item["MASTER_LEVEL"]}</ListGroupItem>
+        {/*<ListGroupItem>转生次数: {item["ResetLife"]}</ListGroupItem>*/}
         <ListGroupItem>当前等级: {item["cLevel"]}</ListGroupItem>
+        <ListGroupItem>大师等级: {item["MASTER_LEVEL"]}</ListGroupItem>
+        <ListGroupItem>大师经验: {item["ML_EXP"]}</ListGroupItem>
         <ListGroupItem>总共点数: {totalPoints}</ListGroupItem>
       </ListGroup>
     </Card>

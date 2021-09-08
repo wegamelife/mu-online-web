@@ -22,12 +22,12 @@ Begin
     DECLARE @SHENGDAOTS int
 
     SET @Result = 0x00
-    SET @FASHI= 1000 -- 法师出生点数
-    SET @ZHANSHI= 1000 -- 战士出生点数
-    SET @JINGLING= 1000 -- 精灵出生点数
-    SET @MOJIAN= 1000 -- 魔剑出生点数
-    SET @SHENGDAO= 1000 -- 圣导出生点数
-    SET @ZHAOHUAN= 1000 -- 召唤出生点数
+    SET @FASHI= 0 -- 法师出生点数
+    SET @ZHANSHI= 0 -- 战士出生点数
+    SET @JINGLING= 0 -- 精灵出生点数
+    SET @MOJIAN= 0 -- 魔剑出生点数
+    SET @SHENGDAO= 0 -- 圣导出生点数
+    SET @ZHAOHUAN= 0 -- 召唤出生点数
     SET @BORNMONEY= 100000000 -- 出生送的钱
     SET @SHENGDAOTS = 9999 --圣导出生统率
 

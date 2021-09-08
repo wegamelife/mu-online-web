@@ -37,7 +37,7 @@ hr {
 
 .index-feature {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
   gap: 1rem;
 }
 
@@ -131,6 +131,13 @@ hr {
 
 .rank-card .card-header {
   background-color: #fff;
+}
+
+.rank-card .max {
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 4px;
 }
 
 .rank-card-top-style {

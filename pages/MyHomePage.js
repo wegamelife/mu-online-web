@@ -7,6 +7,7 @@ import { useRouter } from "next/router";
 import axios from "axios";
 import Image from "next/image";
 import RoleCodeMap from "../lib/RoleCodeMap";
+import {CAN_RESET_LIFE, LEVEL_UP_POINTS} from "../lib/config";
 
 export default function MyHomePage() {
   const { user, updateUser } = useContext(UserContext);
@@ -99,8 +100,7 @@ function Character({ item }) {
   const [Energy, setEnergy] = useState(item["Energy"]);
   const [LevelUpPoint, setLevelUpPoint] = useState(item["LevelUpPoint"]);
 
-  const totalPoints =
-    item["ResetLife"] * 600 + 1000 + item["cLevel"] * 50 + 30 * 4;
+  const totalPoints = item["cLevel"] * LEVEL_UP_POINTS + 30 * 4;
 
   const roleName = RoleCodeMap[item["Class"]];
 
@@ -116,7 +116,7 @@ function Character({ item }) {
         </div>
       </Card.Header>
       <ListGroup className="list-group-flush">
-        <ListGroupItem>转生次数: {item["ResetLife"]}</ListGroupItem>
+        {/*<ListGroupItem>转生次数: {item["ResetLife"]}</ListGroupItem>*/}
         <ListGroupItem>当前等级: {item["cLevel"]}</ListGroupItem>
         <ListGroupItem>剩余点数: {LevelUpPoint}</ListGroupItem>
         <ListGroupItem>
@@ -191,52 +191,55 @@ function Character({ item }) {
       <Card.Body>
         {message && <Alert variant="danger">{message}</Alert>}
         <div>
-          <Button
-            disabled={loading}
-            variant="outline-primary"
-            style={{ marginRight: ".5rem" }}
-            onClick={() => {
-              if (loading) {
-                return;
-              }
+          {CAN_RESET_LIFE && (
+            <Button
+              disabled={loading}
+              variant="outline-primary"
+              style={{ marginRight: ".5rem" }}
+              onClick={() => {
+                if (loading) {
+                  return;
+                }
 
-              const resetLife = item["ResetLife"];
-              const cLevel = item["cLevel"];
+                const resetLife = item["ResetLife"];
+                const cLevel = item["cLevel"];
 
-              if (resetLife > 99) {
-                setMessage("你已经满转了");
-                return;
-              }
+                if (resetLife > 99) {
+                  setMessage("你已经满转了");
+                  return;
+                }
 
-              if (cLevel < 399) {
-                setMessage("当前角色等级不到400");
-                return;
-              }
+                if (cLevel < 399) {
+                  setMessage("当前角色等级不到400");
+                  return;
+                }
 
-              setLoading(true);
-              axios
-                .post(`/api/users/resetLife`, {
-                  username: item["AccountID"],
-                  characterName: item["Name"],
-                })
-                .then((r) => {
-                  console.log(r.data);
-                  setMessage("成功转职");
-                  setTimeout(() => {
-                    location.reload();
-                  }, 200);
-                })
-                .catch((err) => {
-                  console.log(err.response.data);
-                  setMessage(err.response.data.message);
-                })
-                .finally(() => {
-                  setLoading(false);
-                });
-            }}
-          >
-            {loading ? "Loading..." : "转生"}
-          </Button>
+                setLoading(true);
+                axios
+                  .post(`/api/users/resetLife`, {
+                    username: item["AccountID"],
+                    characterName: item["Name"],
+                  })
+                  .then((r) => {
+                    console.log(r.data);
+                    setMessage("成功转职");
+                    setTimeout(() => {
+                      location.reload();
+                    }, 200);
+                  })
+                  .catch((err) => {
+                    console.log(err.response.data);
+                    setMessage(err.response.data.message);
+                  })
+                  .finally(() => {
+                    setLoading(false);
+                  });
+              }}
+            >
+              {loading ? "Loading..." : "转生"}
+            </Button>
+          )}
+
           <Button
             disabled={loading}
             variant="outline-primary"
@@ -329,6 +332,11 @@ function Character({ item }) {
                 return;
               }
 
+              if (item["cLevel"] < 4000) {
+                setMessage("貌似你还没有4000级");
+                return;
+              }
+
               if (![1, 17, 33, 48, 64, 81].includes(item["Class"])) {
                 setMessage("只有二转职业才能进行快速三转");
                 return;
@@ -356,7 +364,7 @@ function Character({ item }) {
                 });
             }}
           >
-            {loading ? "Loading..." : "转职"}
+            {loading ? "Loading..." : "三转"}
           </Button>
           <Button
             disabled={loading}
@@ -365,7 +373,9 @@ function Character({ item }) {
               if (loading) {
                 return;
               }
-              const _confirm = confirm("你确定要恢复到二转吗?");
+              const _confirm = confirm(
+                "你确定要恢复到二转吗?恢复2转请取下三代翅膀,不然会丢失"
+              );
 
               if (!_confirm) {
                 return;

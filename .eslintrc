@@ -1,3 +1,18 @@
 {
-  "extends": ["next", "next/core-web-vitals"]
+  "extends": [
+    "next",
+    "next/core-web-vitals"
+  ],
+  "overrides": [
+    {
+      "files": [
+        "*-test.js",
+        "*.spec.js",
+        "*.js"
+      ],
+      "rules": {
+        "react/no-unescaped-entities": "off"
+      }
+    }
+  ]
 }
