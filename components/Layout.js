@@ -34,6 +34,7 @@ export default function Layout({ children, home }) {
                   <Nav.Link href="/">
                     {user["memb___id"]}({user["jf"]})
                   </Nav.Link>
+                  <Nav.Link href="/MyAccountStatus">账号状态</Nav.Link>
                   <Nav.Link
                     href="/"
                     onClick={(e) => {
@@ -50,7 +51,7 @@ export default function Layout({ children, home }) {
           </Container>
         </Navbar>
       </header>
-      <main style={{marginTop: '5rem'}}>
+      <main style={{ marginTop: "5rem" }}>
         <Container className="mt-4">{children}</Container>
       </main>
     </div>

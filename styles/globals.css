@@ -41,7 +41,7 @@ hr {
   gap: 1rem;
 }
 
-@media (max-width: 1024px) {
+@media (max-width: 1200px) {
   .index-feature {
     grid-template-columns: 1fr 1fr;
   }
@@ -81,11 +81,17 @@ hr {
 
 .characters {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
   gap: 1rem;
 }
 
-@media (max-width: 1024px) {
+.characters .characters-actions {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: .25rem;
+}
+
+@media (max-width: 1200px) {
   .characters {
     grid-template-columns: 1fr 1fr;
   }
@@ -113,7 +119,7 @@ hr {
   margin-bottom: 2rem;
 }
 
-@media (max-width: 1024px) {
+@media (max-width: 1200px) {
   .rank {
     grid-template-columns: 1fr 1fr;
   }

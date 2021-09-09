@@ -3,18 +3,16 @@ import Layout from "../components/Layout";
 import { Alert, Card, ListGroup, ListGroupItem, Form } from "react-bootstrap";
 import { useState, useContext, useEffect } from "react";
 import { UserContext } from "./_app";
-import { useRouter } from "next/router";
 import axios from "axios";
 import Image from "next/image";
 import RoleCodeMap from "../lib/RoleCodeMap";
-import {CAN_RESET_LIFE, LEVEL_UP_POINTS} from "../lib/config";
+import { CAN_RESET_LIFE, LEVEL_UP_POINTS } from "../lib/config";
+import { getTotalPoints } from "../lib/utils";
 
 export default function MyHomePage() {
   const { user, updateUser } = useContext(UserContext);
-  const router = useRouter();
   const [characters, setCharacters] = useState([]);
-
-  const memb___id = user ? user["memb___id"] : 1;
+  const memb___id = user ? user["memb___id"] : -9999;
 
   useEffect(() => {
     if (!user) {
@@ -44,7 +42,6 @@ export default function MyHomePage() {
   return (
     <Layout>
       <h5>角色管理</h5>
-      <hr />
       <div className="characters">
         {characters.map((item) => (
           <Character item={item} key={item["Name"]} />
@@ -100,9 +97,92 @@ function Character({ item }) {
   const [Energy, setEnergy] = useState(item["Energy"]);
   const [LevelUpPoint, setLevelUpPoint] = useState(item["LevelUpPoint"]);
 
-  const totalPoints = item["cLevel"] * LEVEL_UP_POINTS + 30 * 4;
-
+  const totalPoints = getTotalPoints(item);
   const roleName = RoleCodeMap[item["Class"]];
+
+  const to3Zhuan = () => {
+    if (loading) {
+      return;
+    }
+
+    const _confirm = confirm("确定要转职?");
+
+    if (!_confirm) {
+      return;
+    }
+
+    if (item["cLevel"] < 4000) {
+      setMessage("貌似你还没有4000级");
+      return;
+    }
+
+    if (![1, 17, 33, 48, 64, 81].includes(item["Class"])) {
+      setMessage("只有二转职业才能进行快速三转");
+      return;
+    }
+
+    setLoading(true);
+    axios
+      .post(`/api/users/zhuanZhi3`, {
+        username: item["AccountID"],
+        characterName: item["Name"],
+      })
+      .then((r) => {
+        console.log(r.data);
+        setMessage("成功3次转职");
+        setTimeout(() => {
+          location.reload();
+        }, 500);
+      })
+      .catch((err) => {
+        console.log(err.response.data);
+        setMessage(err.response.data.message);
+      })
+      .finally(() => {
+        setLoading(false);
+      });
+  };
+
+  const backTo2Zhuan = () => {
+    if (loading) {
+      return;
+    }
+    const _confirm = confirm(
+      "你确定要恢复到二转吗?恢复2转请取下三代翅膀,不然会丢失"
+    );
+
+    if (!_confirm) {
+      return;
+    }
+
+    if (![3, 19, 35, 83, 50, 66].includes(item["Class"])) {
+      setMessage("貌似你还没有三转");
+      return;
+    }
+
+    setLoading(true);
+    axios
+      .post(`/api/users/backTo2Zhuan`, {
+        username: item["AccountID"],
+        characterName: item["Name"],
+      })
+      .then((r) => {
+        console.log(r.data);
+        setMessage("成功恢复到二转");
+        setTimeout(() => {
+          location.reload();
+        }, 500);
+      })
+      .catch((err) => {
+        console.log(err.response.data);
+        setMessage(err.response.data.message);
+      })
+      .finally(() => {
+        setLoading(false);
+      });
+  };
+
+  const is3Zhuan = [3, 19, 35, 83, 50, 66].includes(item["Class"]);
 
   return (
     <Card style={{ width: "100%" }} key={item["Name"]}>
@@ -190,12 +270,12 @@ function Character({ item }) {
       </ListGroup>
       <Card.Body>
         {message && <Alert variant="danger">{message}</Alert>}
-        <div>
+        <div className="characters-actions">
           {CAN_RESET_LIFE && (
             <Button
               disabled={loading}
               variant="outline-primary"
-              style={{ marginRight: ".5rem" }}
+              size="sm"
               onClick={() => {
                 if (loading) {
                   return;
@@ -239,11 +319,10 @@ function Character({ item }) {
               {loading ? "Loading..." : "转生"}
             </Button>
           )}
-
           <Button
             disabled={loading}
             variant="outline-primary"
-            style={{ marginRight: ".5rem" }}
+            size="sm"
             onClick={() => {
               if (loading) {
                 return;
@@ -271,12 +350,12 @@ function Character({ item }) {
                 });
             }}
           >
-            {loading ? "Loading..." : "洗点"}
+            {loading ? "Loading..." : "在线洗点"}
           </Button>
           <Button
             disabled={loading}
             variant="outline-primary"
-            style={{ marginRight: ".5rem" }}
+            size="sm"
             onClick={() => {
               if (loading) {
                 return;
@@ -313,103 +392,27 @@ function Character({ item }) {
                 });
             }}
           >
-            {loading ? "Loading..." : "加点"}
+            {loading ? "Loading..." : "在线加点"}
           </Button>
-        </div>
-        <div className="mt-2">
-          <Button
-            disabled={loading}
-            variant="outline-primary"
-            style={{ marginRight: ".5rem" }}
-            onClick={() => {
-              if (loading) {
-                return;
-              }
-
-              const _confirm = confirm("确定要转职?");
-
-              if (!_confirm) {
-                return;
-              }
-
-              if (item["cLevel"] < 4000) {
-                setMessage("貌似你还没有4000级");
-                return;
-              }
-
-              if (![1, 17, 33, 48, 64, 81].includes(item["Class"])) {
-                setMessage("只有二转职业才能进行快速三转");
-                return;
-              }
-
-              setLoading(true);
-              axios
-                .post(`/api/users/zhuanZhi3`, {
-                  username: item["AccountID"],
-                  characterName: item["Name"],
-                })
-                .then((r) => {
-                  console.log(r.data);
-                  setMessage("成功3次转职");
-                  setTimeout(() => {
-                    location.reload();
-                  }, 500);
-                })
-                .catch((err) => {
-                  console.log(err.response.data);
-                  setMessage(err.response.data.message);
-                })
-                .finally(() => {
-                  setLoading(false);
-                });
-            }}
-          >
-            {loading ? "Loading..." : "三转"}
-          </Button>
-          <Button
-            disabled={loading}
-            variant="outline-primary"
-            onClick={() => {
-              if (loading) {
-                return;
-              }
-              const _confirm = confirm(
-                "你确定要恢复到二转吗?恢复2转请取下三代翅膀,不然会丢失"
-              );
-
-              if (!_confirm) {
-                return;
-              }
-
-              if (![3, 19, 35, 83, 50, 66].includes(item["Class"])) {
-                setMessage("貌似你还没有三转");
-                return;
-              }
-
-              setLoading(true);
-              axios
-                .post(`/api/users/backTo2Zhuan`, {
-                  username: item["AccountID"],
-                  characterName: item["Name"],
-                })
-                .then((r) => {
-                  console.log(r.data);
-                  setMessage("成功恢复到二转");
-                  setTimeout(() => {
-                    location.reload();
-                  }, 500);
-                })
-                .catch((err) => {
-                  console.log(err.response.data);
-                  setMessage(err.response.data.message);
-                })
-                .finally(() => {
-                  setLoading(false);
-                });
-            }}
-          >
-            {loading ? "Loading..." : "恢复两转"}
-          </Button>
+          {is3Zhuan ? (
+            <Button
+              disabled={loading}
+              variant="outline-primary"
+              onClick={backTo2Zhuan}
+              size="sm"
+            >
+              {loading ? "Loading..." : "退回二转"}
+            </Button>
+          ) : (
+            <Button
+              disabled={loading}
+              variant="outline-primary"
+              onClick={to3Zhuan}
+              size="sm"
+            >
+              {loading ? "Loading..." : "三次转职"}
+            </Button>
+          )}
         </div>
       </Card.Body>
     </Card>
