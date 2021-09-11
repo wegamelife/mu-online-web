@@ -1,13 +1,20 @@
 import Button from "react-bootstrap/Button";
 import Layout from "../components/Layout";
-import { Alert, Card, ListGroup, ListGroupItem, Form } from "react-bootstrap";
+import {
+  Alert,
+  Card,
+  ListGroup,
+  ListGroupItem,
+  Form,
+  Modal,
+} from "react-bootstrap";
 import { useState, useContext, useEffect } from "react";
 import { UserContext } from "./_app";
 import axios from "axios";
 import Image from "next/image";
 import RoleCodeMap from "../lib/RoleCodeMap";
 import { CAN_RESET_LIFE, LEVEL_UP_POINTS } from "../lib/config";
-import { getTotalPoints } from "../lib/utils";
+import { checkName, checkNameLength, getTotalPoints } from "../lib/utils";
 
 export default function MyHomePage() {
   const { user, updateUser } = useContext(UserContext);
@@ -96,6 +103,7 @@ function Character({ item }) {
   const [Vitality, setVitality] = useState(item["Vitality"]);
   const [Energy, setEnergy] = useState(item["Energy"]);
   const [LevelUpPoint, setLevelUpPoint] = useState(item["LevelUpPoint"]);
+  const [showChangeNameModal, setShowChangeNameModal] = useState(false);
 
   const totalPoints = getTotalPoints(item);
   const roleName = RoleCodeMap[item["Class"]];
@@ -183,7 +191,6 @@ function Character({ item }) {
   };
 
   const is3Zhuan = [3, 19, 35, 83, 50, 66].includes(item["Class"]);
-
   return (
     <Card style={{ width: "100%" }} key={item["Name"]}>
       <Card.Header>
@@ -413,8 +420,116 @@ function Character({ item }) {
               {loading ? "Loading..." : "三次转职"}
             </Button>
           )}
+          <Button
+            disabled={loading}
+            variant="outline-primary"
+            onClick={() => {
+              setShowChangeNameModal(true);
+            }}
+            size="sm"
+          >
+            {loading ? "Loading..." : "在线改名"}
+          </Button>
         </div>
       </Card.Body>
+      {showChangeNameModal && (
+        <ChangeNameComponent
+          item={item}
+          showChangeNameModal={showChangeNameModal}
+          setShowChangeNameModal={setShowChangeNameModal}
+        />
+      )}
     </Card>
+  );
+}
+
+function ChangeNameComponent({
+  item,
+  showChangeNameModal,
+  setShowChangeNameModal,
+}) {
+  const [changedName, setChangedName] = useState(item["Name"]);
+  const [loading, setLoading] = useState(false);
+  const [message, setMessage] = useState("");
+
+  return (
+    <>
+      <Modal
+        show={showChangeNameModal}
+        onHide={() => {
+          setShowChangeNameModal(false);
+        }}
+      >
+        <Modal.Header closeButton>
+          <Modal.Title>在线改名</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <Form.Control
+            type="text"
+            placeholder="角色名称"
+            value={changedName}
+            onChange={(e) => {
+              const v = e.target.value;
+              setChangedName(v);
+            }}
+          />
+          <div className="my-2">
+            {message && <Alert variant="danger">{message}</Alert>}
+          </div>
+        </Modal.Body>
+        <Modal.Footer>
+          <Button
+            variant="outline-primary"
+            onClick={() => {
+              setShowChangeNameModal(false);
+            }}
+          >
+            关闭
+          </Button>
+          <Button
+            variant="primary"
+            onClick={() => {
+              if (!checkName(changedName)) {
+                setMessage("输入的数据包含系统所禁止的字符,请重新输入");
+                return;
+              }
+
+              if (!checkNameLength(changedName)) {
+                setMessage("角色名称太长");
+                return;
+              }
+
+              const _confirm = confirm("确定要修改角色名称吗");
+              if (!_confirm) {
+                return;
+              }
+              setLoading(true);
+              axios
+                .post(`/api/users/changeCharacterName`, {
+                  username: item["AccountID"],
+                  characterName: item["Name"],
+                  newName: changedName,
+                })
+                .then((r) => {
+                  console.log(r.data);
+                  setMessage("成功修改角色名称");
+                  setTimeout(() => {
+                    location.reload();
+                  }, 500);
+                })
+                .catch((err) => {
+                  console.log(err.response.data);
+                  setMessage(err.response.data.message);
+                })
+                .finally(() => {
+                  setLoading(false);
+                });
+            }}
+          >
+            保存
+          </Button>
+        </Modal.Footer>
+      </Modal>
+    </>
   );
 }
