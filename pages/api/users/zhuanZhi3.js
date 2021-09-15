@@ -1,4 +1,5 @@
 import { zhuanZhi3 } from "../../../lib";
+import { validateUser } from "../../../lib/auth";
 
 export default async function handler(req, res) {
   if (req.method !== "POST") {
@@ -9,6 +10,7 @@ export default async function handler(req, res) {
 
   const { username, characterName } = req.body;
   let result;
+  await validateUser(req, res);
 
   try {
     result = await zhuanZhi3(username, characterName);

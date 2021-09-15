@@ -1,10 +1,10 @@
 import Layout from "../components/Layout";
 import { Card, ListGroup, ListGroupItem } from "react-bootstrap";
 import { useState, useEffect } from "react";
-import { RenderImg } from "./MyHomePage";
 import RoleCodeMap from "../lib/RoleCodeMap";
 import axios from "axios";
 import { getTotalPoints } from "../lib/utils";
+import RenderImg from "../components/RenderImg";
 
 export default function RankPage() {
   const [users, setUsers] = useState([]);

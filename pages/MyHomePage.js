@@ -1,23 +1,17 @@
 import Button from "react-bootstrap/Button";
 import Layout from "../components/Layout";
-import {
-  Alert,
-  Card,
-  ListGroup,
-  ListGroupItem,
-  Form,
-  Modal,
-} from "react-bootstrap";
+import { Card, ListGroup, ListGroupItem, Form, Modal } from "react-bootstrap";
 import { useState, useContext, useEffect } from "react";
 import { UserContext } from "./_app";
 import axios from "axios";
-import Image from "next/image";
 import RoleCodeMap from "../lib/RoleCodeMap";
-import { CAN_RESET_LIFE, LEVEL_UP_POINTS } from "../lib/config";
+import { CAN_RESET_LIFE } from "../lib/config";
 import { checkName, checkNameLength, getTotalPoints } from "../lib/utils";
+import RenderImg from "../components/RenderImg";
+import NoLoginComponent from "../components/NoLoginComponent";
 
 export default function MyHomePage() {
-  const { user, updateUser } = useContext(UserContext);
+  const { user, updateUser, updateMessage } = useContext(UserContext);
   const [characters, setCharacters] = useState([]);
   const memb___id = user ? user["memb___id"] : -9999;
 
@@ -30,20 +24,24 @@ export default function MyHomePage() {
       .get(`/api/users/getCharacterByUsername?username=${user.memb___id}`)
       .then((r) => {
         setCharacters(r.data);
+      })
+      .catch((err) => {
+        updateMessage(err.response.data.message);
       });
 
-    axios.get(`/api/users/getUser?username=${user.memb___id}`).then((r) => {
-      updateUser(r.data);
-      localStorage.setItem("user", JSON.stringify(r.data));
-    });
+    axios
+      .get(`/api/users/getUser?username=${user.memb___id}`)
+      .then((r) => {
+        updateUser(r.data);
+        localStorage.setItem("user", JSON.stringify(r.data));
+      })
+      .catch((err) => {
+        updateMessage(err.response.data.message);
+      });
   }, [memb___id]);
 
   if (!user) {
-    return (
-      <Layout>
-        <Alert variant="danger">请先登陆</Alert>
-      </Layout>
-    );
+    return <NoLoginComponent />;
   }
 
   return (
@@ -58,45 +56,8 @@ export default function MyHomePage() {
   );
 }
 
-export function RenderImg({ roleName }) {
-  let imgSrc = "/mofashi.jpg";
-
-  switch (roleName) {
-    case "法师":
-    case "魔导士":
-    case "神导师":
-      imgSrc = "/mofashi.jpg";
-      break;
-    case "剑士":
-    case "骑士":
-    case "神骑士":
-      imgSrc = "/jianshi.jpg";
-      break;
-    case "弓箭手":
-    case "圣射手":
-    case "神射手":
-      imgSrc = "/gongjianshou.jpg";
-      break;
-    case "召唤师":
-    case "圣巫师":
-    case "神巫师":
-      imgSrc = "/zhaohuanshi.jpg";
-      break;
-    case "魔剑士":
-    case "剑圣":
-      imgSrc = "/mojianshi.jpg";
-      break;
-    case "圣导师":
-    case "祭师":
-      imgSrc = "/shendaoshi.jpg";
-      break;
-  }
-
-  return <Image src={imgSrc} width={80} height={80} alt="icon" />;
-}
-
 function Character({ item }) {
-  const [message, setMessage] = useState("");
+  const { updateMessage } = useContext(UserContext);
   const [loading, setLoading] = useState(false);
   const [Strength, setStrength] = useState(item["Strength"]);
   const [Dexterity, setDexterit] = useState(item["Dexterity"]);
@@ -120,12 +81,12 @@ function Character({ item }) {
     }
 
     if (item["cLevel"] < 4000) {
-      setMessage("貌似你还没有4000级");
+      updateMessage("貌似你还没有4000级");
       return;
     }
 
     if (![1, 17, 33, 48, 64, 81].includes(item["Class"])) {
-      setMessage("只有二转职业才能进行快速三转");
+      updateMessage("只有二转职业才能进行快速三转");
       return;
     }
 
@@ -137,14 +98,14 @@ function Character({ item }) {
       })
       .then((r) => {
         console.log(r.data);
-        setMessage("成功3次转职");
+        updateMessage("成功3次转职");
         setTimeout(() => {
           location.reload();
         }, 500);
       })
       .catch((err) => {
         console.log(err.response.data);
-        setMessage(err.response.data.message);
+        updateMessage(err.response.data.message);
       })
       .finally(() => {
         setLoading(false);
@@ -164,7 +125,7 @@ function Character({ item }) {
     }
 
     if (![3, 19, 35, 83, 50, 66].includes(item["Class"])) {
-      setMessage("貌似你还没有三转");
+      updateMessage("貌似你还没有三转");
       return;
     }
 
@@ -176,14 +137,14 @@ function Character({ item }) {
       })
       .then((r) => {
         console.log(r.data);
-        setMessage("成功恢复到二转");
+        updateMessage("成功恢复到二转");
         setTimeout(() => {
           location.reload();
         }, 500);
       })
       .catch((err) => {
         console.log(err.response.data);
-        setMessage(err.response.data.message);
+        updateMessage(err.response.data.message);
       })
       .finally(() => {
         setLoading(false);
@@ -276,7 +237,6 @@ function Character({ item }) {
         </ListGroupItem>
       </ListGroup>
       <Card.Body>
-        {message && <Alert variant="danger">{message}</Alert>}
         <div className="characters-actions">
           {CAN_RESET_LIFE && (
             <Button
@@ -292,12 +252,12 @@ function Character({ item }) {
                 const cLevel = item["cLevel"];
 
                 if (resetLife > 99) {
-                  setMessage("你已经满转了");
+                  updateMessage("你已经满转了");
                   return;
                 }
 
                 if (cLevel < 399) {
-                  setMessage("当前角色等级不到400");
+                  updateMessage("当前角色等级不到400");
                   return;
                 }
 
@@ -309,14 +269,14 @@ function Character({ item }) {
                   })
                   .then((r) => {
                     console.log(r.data);
-                    setMessage("成功转职");
+                    updateMessage("成功转职");
                     setTimeout(() => {
                       location.reload();
                     }, 200);
                   })
                   .catch((err) => {
                     console.log(err.response.data);
-                    setMessage(err.response.data.message);
+                    updateMessage(err.response.data.message);
                   })
                   .finally(() => {
                     setLoading(false);
@@ -343,14 +303,14 @@ function Character({ item }) {
                 })
                 .then((r) => {
                   console.log(r.data);
-                  setMessage("洗点成功");
+                  updateMessage("洗点成功");
                   setTimeout(() => {
                     location.reload();
                   }, 500);
                 })
                 .catch((err) => {
                   console.log(err.response.data);
-                  setMessage(err.response.data.message);
+                  updateMessage(err.response.data.message);
                 })
                 .finally(() => {
                   setLoading(false);
@@ -369,7 +329,7 @@ function Character({ item }) {
               }
 
               if (LevelUpPoint < 0) {
-                setMessage("剩余点数不能为负数");
+                updateMessage("剩余点数不能为负数");
                 return;
               }
 
@@ -385,14 +345,14 @@ function Character({ item }) {
                 })
                 .then((r) => {
                   console.log(r.data);
-                  setMessage("加点成功");
+                  updateMessage("加点成功");
                   setTimeout(() => {
                     location.reload();
                   }, 500);
                 })
                 .catch((err) => {
                   console.log(err.response.data);
-                  setMessage(err.response.data.message);
+                  updateMessage(err.response.data.message);
                 })
                 .finally(() => {
                   setLoading(false);
@@ -450,7 +410,7 @@ function ChangeNameComponent({
 }) {
   const [changedName, setChangedName] = useState(item["Name"]);
   const [loading, setLoading] = useState(false);
-  const [message, setMessage] = useState("");
+  const { updateMessage } = useContext(UserContext);
 
   return (
     <>
@@ -473,9 +433,6 @@ function ChangeNameComponent({
               setChangedName(v);
             }}
           />
-          <div className="my-2">
-            {message && <Alert variant="danger">{message}</Alert>}
-          </div>
         </Modal.Body>
         <Modal.Footer>
           <Button
@@ -490,12 +447,12 @@ function ChangeNameComponent({
             variant="primary"
             onClick={() => {
               if (!checkName(changedName)) {
-                setMessage("输入的数据包含系统所禁止的字符,请重新输入");
+                updateMessage("输入的数据包含系统所禁止的字符,请重新输入");
                 return;
               }
 
               if (!checkNameLength(changedName)) {
-                setMessage("角色名称太长");
+                updateMessage("角色名称太长");
                 return;
               }
 
@@ -512,14 +469,14 @@ function ChangeNameComponent({
                 })
                 .then((r) => {
                   console.log(r.data);
-                  setMessage("成功修改角色名称");
+                  updateMessage("成功修改角色名称");
                   setTimeout(() => {
                     location.reload();
                   }, 500);
                 })
                 .catch((err) => {
                   console.log(err.response.data);
-                  setMessage(err.response.data.message);
+                  updateMessage(err.response.data.message);
                 })
                 .finally(() => {
                   setLoading(false);

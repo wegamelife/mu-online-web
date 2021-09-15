@@ -1,14 +1,17 @@
-import { getCharactersByAccount} from "../../../lib";
+import { getCharactersByAccount } from "../../../lib";
+import { validateUser } from "../../../lib/auth";
 
 export default async function handler(req, res) {
-    const { username } = req.query;
-    const user = await getCharactersByAccount(username);
+  const { username } = req.query;
+  const user = await getCharactersByAccount(username);
 
-    if (!user) {
-        res.status(500).send({
-            message: "user not exists",
-        });
-    } else {
-        res.json(user);
-    }
+  await validateUser(req, res);
+
+  if (!user) {
+    res.status(500).send({
+      message: "user not exists",
+    });
+  } else {
+    res.json(user);
+  }
 }

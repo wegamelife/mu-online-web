@@ -3,36 +3,38 @@ import { Alert, Button } from "react-bootstrap";
 import { useState, useEffect, useContext } from "react";
 import axios from "axios";
 import { UserContext } from "./_app";
+import NoLoginComponent from "../components/NoLoginComponent";
 
 export default function MyAccountStatus() {
-  const { user, updateUser } = useContext(UserContext);
+  const { user, updateMessage } = useContext(UserContext);
   const [latestUser, setLatestUser] = useState(null);
-  const [message, setMessage] = useState("");
   const memb___id = user ? user["memb___id"] : -9999;
+
   useEffect(() => {
+    console.log(`user`, user);
     if (!user) {
       return;
     }
     const devUrl = `/json/user.json`;
     const url = `/api/users/getUser?username=${user.memb___id}`;
-    axios.get(url).then((r) => {
-      setLatestUser(r.data);
-    });
+    axios
+      .get(url)
+      .then((r) => {
+        setLatestUser(r.data);
+      })
+      .catch((err) => {
+        updateMessage(err.response.data.message);
+      });
   }, [memb___id]);
 
   if (!latestUser) {
-    return (
-      <Layout>
-        <Alert variant="info">请登录</Alert>
-      </Layout>
-    );
+    return <NoLoginComponent />;
   }
 
   return (
     <Layout>
       <h5 className="mb-3">账号状态</h5>
-      {message && <Alert variant="info">{message}</Alert>}
-      <AccountInfo user={latestUser} setMessage={setMessage} />
+      <AccountInfo user={latestUser} />
     </Layout>
   );
 }
@@ -52,7 +54,8 @@ const AlertIcon = () => (
   </svg>
 );
 
-function AccountInfo({ user, setMessage }) {
+function AccountInfo({ user }) {
+  const { updateMessage } = useContext(UserContext);
   const [loading, setLoading] = useState(false);
   const isBlocked = user["bloc_code"] !== "0";
   const userAccount = user["memb___id"];
@@ -77,14 +80,14 @@ function AccountInfo({ user, setMessage }) {
             })
             .then((r) => {
               console.log(r.data);
-              setMessage("修复成功");
+              updateMessage("修复成功");
               setTimeout(() => {
                 location.reload();
               }, 200);
             })
             .catch((err) => {
               console.log(err.response.data);
-              setMessage(err.response.data.message);
+              updateMessage(err.response.data.message);
             })
             .finally(() => {
               setLoading(false);

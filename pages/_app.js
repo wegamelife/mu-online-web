@@ -6,10 +6,13 @@ import { createContext, useState, useEffect } from "react";
 export const UserContext = createContext({
   user: null,
   updateUser: () => {},
+  message: "",
+  updateMessage: () => {},
 });
 
 function MyApp({ Component, pageProps }) {
   const [user, setUser] = useState(null);
+  const [message, setMessage] = useState("");
 
   useEffect(() => {
     let localUser = localStorage.getItem("user");
@@ -22,6 +25,8 @@ function MyApp({ Component, pageProps }) {
       value={{
         user: user,
         updateUser: setUser,
+        message: message,
+        updateMessage: setMessage,
       }}
     >
       <Component {...pageProps} />

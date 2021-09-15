@@ -1,11 +1,14 @@
 import Head from "next/head";
-import { Container, Nav, Navbar } from "react-bootstrap";
+import { Alert, Container, Nav, Navbar } from "react-bootstrap";
 
 import { useContext } from "react";
 import { UserContext } from "../pages/_app";
+import { useRouter } from "next/router";
+import axios from "axios";
 
 export default function Layout({ children, home }) {
-  const { user, updateUser } = useContext(UserContext);
+  const { user, message } = useContext(UserContext);
+  const router = useRouter();
   return (
     <div>
       <Head>
@@ -38,9 +41,11 @@ export default function Layout({ children, home }) {
                   <Nav.Link
                     href="/"
                     onClick={(e) => {
-                      e.preventDefault();
-                      localStorage.removeItem("user");
-                      location.reload("/");
+                      axios.get("/api/users/logout").then((r) => {
+                        e.preventDefault();
+                        localStorage.removeItem("user");
+                        router.push("/LoginPage");
+                      });
                     }}
                   >
                     退出
@@ -52,7 +57,10 @@ export default function Layout({ children, home }) {
         </Navbar>
       </header>
       <main style={{ marginTop: "5rem" }}>
-        <Container className="mt-4">{children}</Container>
+        <Container className="mt-4">
+          {message && <Alert variant="danger">{message}</Alert>}
+          {children}
+        </Container>
       </main>
     </div>
   );
