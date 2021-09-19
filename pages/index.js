@@ -153,6 +153,13 @@ export default function IndexPage() {
           </li>
         </ul>
       </div>
+
+      <div className="mb-5 mt-4">
+        <h4>赞助玩家</h4>
+        <ul>
+          <li>啊语</li>
+        </ul>
+      </div>
     </Layout>
   );
 }

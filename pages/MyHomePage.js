@@ -80,8 +80,8 @@ function Character({ item }) {
       return;
     }
 
-    if (item["cLevel"] < 4000) {
-      updateMessage("貌似你还没有4000级");
+    if (item["cLevel"] < 2000) {
+      updateMessage("貌似你还没有2000级");
       return;
     }
 
