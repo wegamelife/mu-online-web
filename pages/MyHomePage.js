@@ -80,8 +80,8 @@ function Character({ item }) {
       return;
     }
 
-    if (item["cLevel"] < 2000) {
-      updateMessage("貌似你还没有2000级");
+    if (item["cLevel"] < 400) {
+      updateMessage("貌似你还没有400级");
       return;
     }
 
@@ -287,7 +287,7 @@ function Character({ item }) {
             </Button>
           )}
           <Button
-            disabled={loading}
+            disabled={true}
             variant="outline-primary"
             size="sm"
             onClick={() => {
@@ -320,7 +320,7 @@ function Character({ item }) {
             {loading ? "Loading..." : "在线洗点"}
           </Button>
           <Button
-            disabled={loading}
+            disabled={true}
             variant="outline-primary"
             size="sm"
             onClick={() => {
