@@ -1,0 +1,22 @@
+use Muonline
+delete from MEMB_STAT
+delete from MEMB_INFO
+delete from Character
+delete from AccountCharacter
+delete from warehouse
+delete from BFB_SBK
+delete from ExtWareHouse
+delete from GuildMember
+delete from Guild
+delete from ItemLog
+delete from MuCastle_DATA
+delete from OptionData
+delete from T_CGuid
+delete from T_FriendList
+delete from T_FriendMail
+delete from T_FriendMain
+delete from T_MU2003_EVENT
+delete from T_PetItem_Info
+delete from T_RegCount_Check
+delete from T_WaitFriend
+delete from T_MasterLevelSystem

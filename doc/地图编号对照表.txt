@@ -1,0 +1,79 @@
+奇迹地图编号与名称、英文名称对照表
+地图编号	地图名称	地图英文名称
+0	勇者大陆	Lorencia
+1
+地下城	Dungeon
+2	冰风谷	Devias
+3	仙踪林 	Noria
+4	失落之塔	LostTower
+5	流放地 	Exile
+6	古战场	Stadium/Arena
+7	亚特兰蒂斯	Atlans
+8	死亡沙漠	Tarkan
+9	恶魔广场（1-4）	Devil Square
+10	天空之城	Icarus
+11	血色城堡1	Blood Castle
+12	血色城堡2
+13	血色城堡3
+14	血色城堡4
+15	血色城堡5
+16	血色城堡6
+17	血色城堡7
+18	赤色要塞1	Chaos Castle
+19	赤色要塞2
+20	赤色要塞3
+21	赤色要塞4
+22	赤色要塞5
+23	赤色要塞6
+24
+卡利玛1	Kalima
+25	卡利玛2
+26	卡利玛3
+27	卡利玛4
+28	卡利玛5
+29	卡利玛6
+30	罗兰峡谷 	Valley of Loren
+31	魔炼之地	Land of Trial
+32	恶魔广场(5-6)	Devil Square
+33	幽暗森林	Aida
+34	狼魂要塞	crywolf
+35	狼魂魔宫	Reserved
+36	卡利玛7 	Kalima
+37 	坎特鲁废墟	Kantru
+38	坎特鲁遗址	KanturuRemain
+39	坎特鲁提炼之塔	KanturuBoss
+40	 GM召唤区	Silent Map
+41	巴卡斯兵营	Barracks
+42	巴卡斯休息室	Refuge
+45	幻影寺院1	Illusion Temple
+46
+幻影寺院2
+47	幻影寺院3
+48	幻影寺院4
+49	幻影寺院5
+50	幻影寺院6
+51
+幻术园	Elbeland
+52	血色城堡8	Blood Castle
+53	赤色要塞7	Chaos Castle
+56	安宁池	Swamp of Calmness
+57	冰霜之城	Raklion
+58	冰霜之城蜘蛛地图	Raklion BOSS地图
+62	圣诞之地	SantaTown
+63	囚禁之岛	Vulcanus
+64	角斗场	DuelArena
+65	生魂广场1	Doppelganger1
+66	生魂广场2	Doppelganger2
+67	生魂广场3	Doppelganger3
+68	生魂广场4	Doppelganger4
+69	帝国要塞1	ImperialGuardian1
+70	帝国要塞2	ImperialGuardian2
+71	帝国要塞3	ImperialGuardian3
+72	帝国要塞4	ImperialGuardian4
+79	罗兰市场	LorenMarket
+80	卡伦特1	Karutan1
+81	卡伦特2	Karutan2
+91	阿卡伦
+Acheron
+92	阿卡伦战役	ArcaBattle_Acheron
+95	德班泰尔	Debenter
