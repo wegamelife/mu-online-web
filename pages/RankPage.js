@@ -117,7 +117,6 @@ function Character({ item, index, online }) {
         <ListGroupItem>大师等级: {item["MASTER_LEVEL"]}</ListGroupItem>
         <ListGroupItem>大师经验: {item["ML_EXP"]}</ListGroupItem>
         <ListGroupItem>总共点数: {totalPoints}</ListGroupItem>
-        <ListGroupItem>PK等级: {item["PkLevel"]}</ListGroupItem>
         <ListGroupItem>PK次数: {item["PkCount"]}</ListGroupItem>
       </ListGroup>
     </Card>

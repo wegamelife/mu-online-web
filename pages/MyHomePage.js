@@ -6,13 +6,19 @@ import { UserContext } from "./_app";
 import axios from "axios";
 import RoleCodeMap from "../lib/RoleCodeMap";
 import { CAN_RESET_LIFE } from "../lib/config";
-import { checkName, checkNameLength, getTotalPoints } from "../lib/utils";
+import {
+  checkName,
+  checkNameLength,
+  getMoreWarehouseNeedJF,
+  getTotalPoints,
+} from "../lib/utils";
 import RenderImg from "../components/RenderImg";
 import NoLoginComponent from "../components/NoLoginComponent";
 
 export default function MyHomePage() {
   const { user, updateUser, updateMessage } = useContext(UserContext);
   const [characters, setCharacters] = useState([]);
+
   const memb___id = user ? user["memb___id"] : -9999;
 
   useEffect(() => {
@@ -52,7 +58,166 @@ export default function MyHomePage() {
           <Character item={item} key={item["Name"]} />
         ))}
       </div>
+      <h5 className="mt-4">扩展仓库</h5>
+      <WarehouseExt user={user} />
     </Layout>
+  );
+}
+
+function WarehouseExt({ user }) {
+  const { updateMessage } = useContext(UserContext);
+  const [warehouse, setWarehouse] = useState(null);
+  const [warehouseExt, setWarehouseExt] = useState([]);
+
+  const warehouseAndExtIsLoaded = warehouse && warehouseExt.length > 0;
+  const username = user.memb___id;
+
+  useEffect(() => {
+    axios
+      .get(`/api/users/getWarehouseInfo?username=${username}`)
+      .then((r) => {
+        setWarehouse(r.data);
+      })
+      .catch((err) => {
+        updateMessage(err.response.data.message);
+      });
+
+    axios
+      .get(`/api/users/getWarehouseExtInfo?username=${username}`)
+      .then((r) => {
+        setWarehouseExt(r.data);
+      })
+      .catch((err) => {
+        updateMessage(err.response.data.message);
+      });
+  }, [username]);
+
+  return (
+    <div className="mb-5 warehouse-ext">
+      {warehouseExt.length === 0 && (
+        <div>
+          <span className="me-2">要使用扩展仓库, 请先初始化</span>
+          <Button
+            variant="outline-primary"
+            size="sm"
+            onClick={() => {
+              const _confirm = confirm("确定要初始化扩展仓库吗?");
+
+              if (!_confirm) {
+                return;
+              }
+
+              axios
+                .post(`/api/users/initWarehouseExt`, {
+                  username: username,
+                })
+                .then((r) => {
+                  updateMessage("扩展仓库初始化完毕");
+                  setTimeout(() => {
+                    location.reload();
+                  }, 500);
+                })
+                .catch((err) => {
+                  console.log(err.response.data);
+                  updateMessage(err.response.data.message);
+                })
+                .finally(() => {});
+            }}
+          >
+            初始化
+          </Button>
+        </div>
+      )}
+      {warehouseAndExtIsLoaded && (
+        <p className="text-muted mb-2">
+          开通第一个扩展仓库免费,
+          额外在开通的扩展仓库所需要的积分是根据如下公式计算的{" "}
+          <b>(n - 1) * (n - 1) * 5000</b>
+        </p>
+      )}
+      {warehouseAndExtIsLoaded && (
+        <div className="warehouse-ext-list">
+          {warehouseExt.map((item) => (
+            <Button
+              variant={
+                warehouse.UsedSlot === item.UsedSlot
+                  ? "primary"
+                  : "outline-primary"
+              }
+              key={item.UsedSlot}
+              disabled={warehouse.UsedSlot === item.UsedSlot}
+              onClick={() => {
+                // 切换仓库
+                if (warehouse.UsedSlot === item.UsedSlot) {
+                  return;
+                }
+                axios
+                  .post(`/api/users/switchWarehouse`, {
+                    username: username,
+                    targetUsedSlot: item.UsedSlot,
+                  })
+                  .then((r) => {
+                    updateMessage("仓库切换成功");
+                    setTimeout(() => {
+                      location.reload();
+                    }, 500);
+                  })
+                  .catch((err) => {
+                    console.log(err.response.data);
+                    updateMessage(err.response.data.message);
+                  })
+                  .finally(() => {});
+              }}
+            >
+              仓库 {item.UsedSlot - 1}
+            </Button>
+          ))}
+          <Button
+            variant="outline-primary"
+            key={999}
+            onClick={() => {
+              const extraWarehouseNum = warehouseExt.length;
+              const needJF = getMoreWarehouseNeedJF(extraWarehouseNum);
+              const currentJF = user.JF;
+
+              if (currentJF - needJF < 0) {
+                updateMessage(
+                  `开通额外的扩展仓库需要 ${needJF} 积分,你当前的积分还不够.`
+                );
+                return;
+              }
+
+              let msg = `开通第 ${extraWarehouseNum} 个扩展仓库需要 ${needJF} 积分, 你同意吗?`;
+
+              const _confirm = confirm(msg);
+
+              if (!_confirm) {
+                return;
+              }
+
+              axios
+                .post(`/api/users/addNewWarehouseExt`, {
+                  username: username,
+                  needJF,
+                })
+                .then((r) => {
+                  updateMessage("成功开通仓库");
+                  setTimeout(() => {
+                    location.reload();
+                  }, 500);
+                })
+                .catch((err) => {
+                  console.log(err.response.data);
+                  updateMessage(err.response.data.message);
+                })
+                .finally(() => {});
+            }}
+          >
+            开通更多
+          </Button>
+        </div>
+      )}
+    </div>
   );
 }
 
@@ -97,7 +262,6 @@ function Character({ item }) {
         characterName: item["Name"],
       })
       .then((r) => {
-        console.log(r.data);
         updateMessage("成功3次转职");
         setTimeout(() => {
           location.reload();
@@ -287,7 +451,7 @@ function Character({ item }) {
             </Button>
           )}
           <Button
-            disabled={true}
+            disabled={loading}
             variant="outline-primary"
             size="sm"
             onClick={() => {
@@ -320,7 +484,7 @@ function Character({ item }) {
             {loading ? "Loading..." : "在线洗点"}
           </Button>
           <Button
-            disabled={true}
+            disabled={loading}
             variant="outline-primary"
             size="sm"
             onClick={() => {
