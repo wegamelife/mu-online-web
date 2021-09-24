@@ -38,7 +38,7 @@ hr {
 .index-feature {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
-  gap: 1rem;
+  gap: 8px;
 }
 
 @media (max-width: 1200px) {

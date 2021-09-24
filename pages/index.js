@@ -97,19 +97,29 @@ export default function IndexPage() {
             <li>玛雅之石 一个 30 积分</li>
             <li>生命宝石 一个 30 积分</li>
             <li>守护宝石 一个 100 积分</li>
+            <li>杀死困顿 100 积分</li>
+            <li>杀死蜘蛛 200 积分</li>
           </ul>
         </div>
 
         <div className="box">
           <div className="overlay" />
-          <h5>新增套装</h5>
+          <h5>新增自定义套装</h5>
           <ul>
-            <li>战士: 塞恩的愤怒 Thain's</li>
-            <li>战士: 塞恩的勇气 Thain's</li>
-            <li>魔法师: 尼古拉斯的审判 Nicolas's</li>
-            <li>魔法师: 尼古拉斯的信念 Nicolas's</li>
-            <li>圣导师: 塔拉夏的裁决 Tal Rasha's</li>
-            <li>圣导师: 塔拉夏的外袍 Tal Rasha's</li>
+            <li>战士: 塞恩的愤怒</li>
+            <li>战士: 塞恩的勇气</li>
+            <li>魔法师: 尼古拉斯的审判</li>
+            <li>魔法师: 尼古拉斯的信念</li>
+            <li>圣导师: 塔拉夏的裁决</li>
+            <li>圣导师: 塔拉夏的外袍</li>
+            <li>弓箭手: 铁娘子的柔情</li>
+            <li>弓箭手: 铁娘子的雅娴</li>
+            <li>召唤师: 瑟西的祝福</li>
+            <li>召唤师: 瑟西的外套</li>
+            <li>魔剑士: 大嫖客的快乐</li>
+            <li>魔剑士: 大嫖客的伪装</li>
+            <li>魔剑士: 狼骑De王子</li>
+            <li>魔剑士: 狼骑De公主</li>
           </ul>
         </div>
 
@@ -182,6 +192,17 @@ export default function IndexPage() {
       </div>
 
       <div className="mb-5 mt-4">
+        <h4 className="index-title">赞助玩家</h4>
+        <div className="index-sponsor">
+          {sponsors.map((item) => (
+            <div className="item" key={item.id}>
+              <span>{item.name}</span>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <div className="mb-5 mt-4">
         <h4 className="index-title">开源项目</h4>
         <ul>
           <li>
@@ -203,17 +224,6 @@ export default function IndexPage() {
             </a>
           </li>
         </ul>
-      </div>
-
-      <div className="mb-5 mt-4">
-        <h4 className="index-title">赞助玩家</h4>
-        <div className="index-sponsor">
-          {sponsors.map((item) => (
-            <div className="item" key={item.id}>
-              <span>{item.name}</span>
-            </div>
-          ))}
-        </div>
       </div>
     </Layout>
   );
