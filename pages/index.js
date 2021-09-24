@@ -41,6 +41,7 @@ export default function IndexPage() {
             <li>出生不送点, 升级每级10点</li>
             <li>总点数 10 * 8000 = 80000</li>
             <li>所有物品合成概率统一设置为 80%</li>
+            <li>扩展仓库, 数量不限制</li>
             <li>自带登录器有F8右键挂机功能, F7一键连击</li>
             <li>需求根据群内投票来修改</li>
           </ul>
@@ -50,7 +51,6 @@ export default function IndexPage() {
           <div className="overlay" />
           <h5>其他设定</h5>
           <ul>
-            <li>所有物品合成概率统一设置为 80%</li>
             <li>生命宝石可追加到+28</li>
             <li>玛雅创造生命守护的掉落率非常高</li>
             <li>古战场加入的怪物生命值提升 10 倍</li>
