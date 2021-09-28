@@ -24,6 +24,7 @@ export default function Layout({ children, home }) {
               <Nav className="me-auto" navbarScroll>
                 <Nav.Link href="/">首页</Nav.Link>
                 <Nav.Link href="/MyHomePage">账号管理</Nav.Link>
+                <Nav.Link href="/Socket">高级镶嵌</Nav.Link>
                 <Nav.Link href="/RankPage">排行榜</Nav.Link>
                 <Nav.Link href="/GameDownloadPage">游戏下载</Nav.Link>
               </Nav>

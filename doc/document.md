@@ -2,19 +2,18 @@
 
 - http://www.745w.com/
 
-
 ## 黑龙波攻速问题
 
-法师最高能连放黑龙的速度是2854
+法师最高能连放黑龙的速度是 2854
 不过要骑驴(角兽)或鸟(彩云兽)就可以了..
-在不骑驴和鸟的情况下最高速是2854
+在不骑驴和鸟的情况下最高速是 2854
 
 ## 套装值
 
 ```
-5 普通套装 
+5 普通套装
 9 体力+10的 普通套装
-6 强化套装 
+6 强化套装
 10 体力 +10的 强化套装
 ```
 
@@ -65,8 +64,7 @@ where type = 'TR'
   and text like '%TableName%'
 ```
 
-
-## 支持积分SQL
+## 支持积分 SQL
 
 运行如下存储过程
 
@@ -90,7 +88,7 @@ WHERE memb___id=@memb___id
 GO
 ```
 
-## 军衔任务SQL语句:执行如下数据库语句
+## 军衔任务 SQL 语句:执行如下数据库语句
 
 ```sql
 use MuOnline
@@ -140,8 +138,67 @@ Update Character set CquestMonsterCount3=0 where CquestMonsterCount3 is null
 exec sp_password null, '123456', 'sa'
 ```
 
-## 1.03H 
+## sqlserver 2000 hex to varbinary function
 
+```sql
+
+create function dbo.fn_hexstrtovarbin(@input varchar(8000))
+    returns varbinary(8000)
+as
+begin
+    declare @result varbinary(8000), @i int, @l int
+
+    set @result = 0x
+    set @l = len(@input)/2
+    set @i = 2
+
+    while @i <= @l
+        begin
+            set @result = @result +
+                          cast(cast(case lower(substring(@input, @i*2-1, 1))
+                                        when '0' then 0x00
+                                        when '1' then 0x10
+                                        when '2' then 0x20
+                                        when '3' then 0x30
+                                        when '4' then 0x40
+                                        when '5' then 0x50
+                                        when '6' then 0x60
+                                        when '7' then 0x70
+                                        when '8' then 0x80
+                                        when '9' then 0x90
+                                        when 'a' then 0xa0
+                                        when 'b' then 0xb0
+                                        when 'c' then 0xc0
+                                        when 'd' then 0xd0
+                                        when 'e' then 0xe0
+                                        when 'f' then 0xf0
+                              end as tinyint) |
+                               cast(case lower(substring(@input, @i*2, 1))
+                                        when '0' then 0x00
+                                        when '1' then 0x01
+                                        when '2' then 0x02
+                                        when '3' then 0x03
+                                        when '4' then 0x04
+                                        when '5' then 0x05
+                                        when '6' then 0x06
+                                        when '7' then 0x07
+                                        when '8' then 0x08
+                                        when '9' then 0x09
+                                        when 'a' then 0x0a
+                                        when 'b' then 0x0b
+                                        when 'c' then 0x0c
+                                        when 'd' then 0x0d
+                                        when 'e' then 0x0e
+                                        when 'f' then 0x0f
+                                   end as tinyint) as binary(1))
+            set @i = @i + 1
+        end
+    return @result
+end
+go
+```
+
+## 1.03H
 
 ```奇迹1.03H-荧光宝石属性、编号介绍（附NPC商店代码）
 //大编号  小编号  物品等级  数量  技能  幸运  追加
@@ -175,7 +232,7 @@ exec sp_password null, '123456', 'sa'
 end
 ```
 
-## 登录器 
+## 登录器
 
 ```
 还是从新编辑一下说明比较好 发现好多朋友都在问好多问题
@@ -187,12 +244,11 @@ end
 
 4、本人技术有限纯属做出来练习练习编程，同时也提供一些方便给其他人。
 ```
+
 ## 万能登陆器的设置方法
 
-1.在奇迹客服端的main.exe创建一个桌面快捷方式
-2. 修改快杰方式属性目标后面跟上：空格+connect/u你的IP+空格/p44405
-3. 运行main.exe即可登入游戏
+1.在奇迹客服端的 main.exe 创建一个桌面快捷方式 2. 修改快杰方式属性目标后面跟上：空格+connect/u 你的 IP+空格/p44405 3. 运行 main.exe 即可登入游戏
 
 ## 其他资源
 
-+ [镶嵌介绍](http://mu.youxidudu.com/zonghe/20161027/66006.html)
+- [镶嵌介绍](http://mu.youxidudu.com/zonghe/20161027/66006.html)

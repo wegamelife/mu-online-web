@@ -127,9 +127,14 @@ export default function IndexPage() {
           <div className="overlay" />
           <h5>自定义连击</h5>
           <ul>
-            <li>法师: 地狱火+黑龙波</li>
-            <li>法师: 暴风雪+毒炎</li>
-            <li>法师: 黑龙波强化+爆炎强化</li>
+            <li>法师</li>
+            <ul>
+              <li>暴风雪+毒炎</li>
+              <li>暴风雪+黑龙波</li>
+              <li>地狱火+黑龙波</li>
+              <li>暴风雪强化+黑龙波强化</li>
+              <li>地狱火强化+黑龙波强化</li>
+            </ul>
           </ul>
         </div>
 

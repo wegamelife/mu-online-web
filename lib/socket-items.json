@@ -1,0 +1,182 @@
+[
+  {
+    "category": 0,
+    "name": "虚伪之剑",
+    "index": 26
+  },
+  {
+    "category": 0,
+    "name": "杀戮之剑",
+    "index": 27
+  },
+  {
+    "category": 0,
+    "name": "双子之剑",
+    "index": 28
+  },
+  {
+    "category": 2,
+    "name": "独裁权杖",
+    "index": 17
+  },
+  {
+    "category": 5,
+    "name": "魔狱之杖",
+    "index": 31
+  },
+  {
+    "category": 5,
+    "name": "致命魔杖",
+    "index": 30
+  },
+  {
+    "category": 4,
+    "name": "神羽之弓",
+    "index": 23
+  },
+  {
+    "category": 7,
+    "name": "泰坦之盔",
+    "index": 45
+  },
+  {
+    "category": 8,
+    "name": "泰坦之铠",
+    "index": 45
+  },
+  {
+    "category": 9,
+    "name": "泰坦之护腿",
+    "index": 45
+  },
+  {
+    "category": 10,
+    "name": "泰坦之护手",
+    "index": 45
+  },
+  {
+    "category": 11,
+    "name": "泰坦之靴",
+    "index": 45
+  },
+
+  {
+    "category": 7,
+    "name": "勇气之盔",
+    "index": 46
+  },
+  {
+    "category": 8,
+    "name": "勇气之铠",
+    "index": 46
+  },
+  {
+    "category": 9,
+    "name": "勇气之护腿",
+    "index": 46
+  },
+  {
+    "category": 10,
+    "name": "勇气之护手",
+    "index": 46
+  },
+  {
+    "category": 11,
+    "name": "勇气之靴",
+    "index": 46
+  },
+
+  {
+    "category": 7,
+    "name": "冥王之盔",
+    "index": 52
+  },
+  {
+    "category": 8,
+    "name": "冥王之铠",
+    "index": 52
+  },
+  {
+    "category": 9,
+    "name": "冥王之护腿",
+    "index": 52
+  },
+  {
+    "category": 10,
+    "name": "冥王之护手",
+    "index": 52
+  },
+  {
+    "category": 11,
+    "name": "冥王之靴",
+    "index": 52
+  },
+
+  {
+    "category": 7,
+    "name": "恐惧之盔",
+    "index": 49
+  },
+  {
+    "category": 8,
+    "name": "恐惧之铠",
+    "index": 49
+  },
+  {
+    "category": 9,
+    "name": "恐惧之护腿",
+    "index": 49
+  },
+  {
+    "category": 10,
+    "name": "恐惧之护手",
+    "index": 49
+  },
+  {
+    "category": 11,
+    "name": "恐惧之靴",
+    "index": 49
+  },
+
+  {
+    "category": 8,
+    "name": "破灭之铠",
+    "index": 48
+  },
+  {
+    "category": 9,
+    "name": "破灭之护腿",
+    "index": 48
+  },
+  {
+    "category": 10,
+    "name": "破灭之护手",
+    "index": 48
+  },
+  {
+    "category": 11,
+    "name": "破灭之靴",
+    "index": 48
+  },
+
+  {
+    "category": 8,
+    "name": "巨石之铠",
+    "index": 47
+  },
+  {
+    "category": 9,
+    "name": "巨石之护腿",
+    "index": 47
+  },
+  {
+    "category": 10,
+    "name": "巨石之护手",
+    "index": 47
+  },
+  {
+    "category": 11,
+    "name": "巨石之靴",
+    "index": 47
+  }
+]
