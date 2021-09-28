@@ -1,13 +1,22 @@
 import Head from "next/head";
-import { Alert, Container, Nav, Navbar } from "react-bootstrap";
+import {
+  Alert,
+  Container,
+  Nav,
+  Navbar,
+  Toast,
+  ToastContainer,
+} from "react-bootstrap";
 
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { UserContext } from "../pages/_app";
 import { useRouter } from "next/router";
+
 import axios from "axios";
 
 export default function Layout({ children, home }) {
-  const { user, message } = useContext(UserContext);
+  const { user, message, updateMessage } = useContext(UserContext);
+  const [showToast, setShowToast] = useState(false);
   const router = useRouter();
   return (
     <div>
@@ -24,7 +33,7 @@ export default function Layout({ children, home }) {
               <Nav className="me-auto" navbarScroll>
                 <Nav.Link href="/">首页</Nav.Link>
                 <Nav.Link href="/MyHomePage">账号管理</Nav.Link>
-                <Nav.Link href="/Socket">高级镶嵌</Nav.Link>
+                <Nav.Link href="/SocketPage">高级镶嵌</Nav.Link>
                 <Nav.Link href="/RankPage">排行榜</Nav.Link>
                 <Nav.Link href="/GameDownloadPage">游戏下载</Nav.Link>
               </Nav>
@@ -59,7 +68,29 @@ export default function Layout({ children, home }) {
       </header>
       <main style={{ marginTop: "5rem" }}>
         <Container className="mt-4">
-          {message && <Alert variant="danger">{message}</Alert>}
+          {message && (
+            <ToastContainer
+              className="p-3"
+              position="top-end"
+              style={{ zIndex: 9999 }}
+            >
+              <Toast
+                onClose={() => {
+                  updateMessage("");
+                }}
+                show={true}
+                animation={false}
+                delay={3000}
+                autohide
+              >
+                <Toast.Header>
+                  <strong className="me-auto">消息</strong>
+                  <small>just now</small>
+                </Toast.Header>
+                <Toast.Body>{message}</Toast.Body>
+              </Toast>
+            </ToastContainer>
+          )}
           {children}
         </Container>
       </main>

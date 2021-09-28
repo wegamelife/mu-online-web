@@ -7,6 +7,7 @@ import { UserContext } from "./_app";
 import socketItemProperties from "../lib/socket-item-properties.json";
 import SocketItems from "../lib/socket-items.json";
 import { parseItem, replaceAt } from "../lib/utils";
+import { SOCKET_NEED_JF } from "../lib/config";
 
 function getWarehouseFirstItem(Items) {
   const rawItem = Items.substr(0, 32);
@@ -190,22 +191,21 @@ export default function RankPage() {
                 onClick={(e) => {
                   e.preventDefault();
                   const currentJF = user.JF;
-                  const neededJF = 30000;
 
                   // alert(`暂未开发`);
                   // return;
 
                   const _confirm = confirm(
-                    `镶嵌要收取额外的 ${neededJF} 积分, 你同意吗?`
+                    `镶嵌要收取额外的 ${SOCKET_NEED_JF} 积分, 你同意吗?`
                   );
 
                   if (!_confirm) {
                     return;
                   }
 
-                  if (currentJF - neededJF < 0) {
+                  if (currentJF - SOCKET_NEED_JF < 0) {
                     updateMessage(
-                      `镶嵌需要 ${neededJF} 积分,你当前的积分还不够.`
+                      `镶嵌需要 ${SOCKET_NEED_JF} 积分,你当前的积分还不够.`
                     );
                     return;
                   }
