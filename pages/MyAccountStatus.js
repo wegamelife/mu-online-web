@@ -3,7 +3,6 @@ import { Alert, Button } from "react-bootstrap";
 import { useState, useEffect, useContext } from "react";
 import axios from "axios";
 import { UserContext } from "./_app";
-import NoLoginComponent from "../components/NoLoginComponent";
 
 export default function MyAccountStatus() {
   const { user, updateMessage } = useContext(UserContext);
@@ -27,14 +26,10 @@ export default function MyAccountStatus() {
       });
   }, [memb___id]);
 
-  if (!latestUser) {
-    return <NoLoginComponent />;
-  }
-
   return (
     <Layout>
       <h5 className="mb-3">账号状态</h5>
-      <AccountInfo user={latestUser} />
+      {latestUser && <AccountInfo user={latestUser} />}
     </Layout>
   );
 }

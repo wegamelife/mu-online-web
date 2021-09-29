@@ -191,3 +191,7 @@ hr {
   display: inline-block;
   width: 50px;
 }
+
+.list-group-item-v1 {
+  padding: .3rem 1rem;
+}

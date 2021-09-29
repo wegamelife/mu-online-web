@@ -113,11 +113,21 @@ function Character({ item, index, online }) {
       </Card.Header>
       <ListGroup className="list-group-flush">
         {/*<ListGroupItem>转生次数: {item["ResetLife"]}</ListGroupItem>*/}
-        <ListGroupItem>当前等级: {item["cLevel"]}</ListGroupItem>
-        <ListGroupItem>大师等级: {item["MASTER_LEVEL"]}</ListGroupItem>
-        <ListGroupItem>大师经验: {item["ML_EXP"]}</ListGroupItem>
-        <ListGroupItem>总共点数: {totalPoints}</ListGroupItem>
-        <ListGroupItem>PK次数: {item["PkCount"]}</ListGroupItem>
+        <ListGroupItem className="list-group-item-v1">
+          当前等级: {item["cLevel"]}
+        </ListGroupItem>
+        <ListGroupItem className="list-group-item-v1">
+          大师等级: {item["MASTER_LEVEL"]}
+        </ListGroupItem>
+        <ListGroupItem className="list-group-item-v1">
+          大师经验: {item["ML_EXP"]}
+        </ListGroupItem>
+        <ListGroupItem className="list-group-item-v1">
+          总共点数: {totalPoints}
+        </ListGroupItem>
+        <ListGroupItem className="list-group-item-v1">
+          PK次数: {item["PkCount"]}
+        </ListGroupItem>
       </ListGroup>
     </Card>
   );

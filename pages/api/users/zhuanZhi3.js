@@ -14,13 +14,7 @@ export default async function handler(req, res) {
 
   try {
     result = await zhuanZhi3(username, characterName);
-    if (!result) {
-      res.status(500).send({
-        message: "Unknown error",
-      });
-    } else {
-      res.json(result);
-    }
+    res.json(result);
   } catch (err) {
     console.log(`err:::`, err);
     res.status(500).send({

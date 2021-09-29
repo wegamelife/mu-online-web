@@ -1,5 +1,5 @@
 import { addPoints } from "../../../lib";
-import {validateUser} from "../../../lib/auth";
+import { validateUser } from "../../../lib/auth";
 
 export default async function handler(req, res) {
   if (req.method !== "POST") {
@@ -24,13 +24,7 @@ export default async function handler(req, res) {
       Vitality,
       Energy
     );
-    if (!result) {
-      res.status(500).send({
-        message: "Unknow error",
-      });
-    } else {
-      res.json(result);
-    }
+    res.json(result);
   } catch (err) {
     console.log(`err:::`, err);
     res.status(500).send({

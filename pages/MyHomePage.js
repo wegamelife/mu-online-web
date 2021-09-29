@@ -13,7 +13,6 @@ import {
   getTotalPoints,
 } from "../lib/utils";
 import RenderImg from "../components/RenderImg";
-import NoLoginComponent from "../components/NoLoginComponent";
 
 export default function MyHomePage() {
   const { user, updateUser, updateMessage } = useContext(UserContext);
@@ -46,10 +45,6 @@ export default function MyHomePage() {
       });
   }, [memb___id]);
 
-  if (!user) {
-    return <NoLoginComponent />;
-  }
-
   return (
     <Layout>
       <h5>角色管理</h5>
@@ -59,7 +54,7 @@ export default function MyHomePage() {
         ))}
       </div>
       <h5 className="mt-4">扩展仓库</h5>
-      <WarehouseExt user={user} />
+      {user && <WarehouseExt user={user} />}
     </Layout>
   );
 }

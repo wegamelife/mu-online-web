@@ -16,12 +16,11 @@ import axios from "axios";
 
 export default function Layout({ children, home }) {
   const { user, message, updateMessage } = useContext(UserContext);
-  const [showToast, setShowToast] = useState(false);
   const router = useRouter();
   return (
     <div>
       <Head>
-        <link rel="icon" href="/favicons/favicon.ico" />
+        <link rel="icon" href={"/favicons/favicon.ico"} />
         <meta name="description" content="土鳖奇迹" />
       </Head>
       <header>

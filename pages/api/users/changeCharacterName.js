@@ -1,5 +1,5 @@
 import { changeCharacterName } from "../../../lib";
-import {validateUser} from "../../../lib/auth";
+import { validateUser } from "../../../lib/auth";
 
 export default async function handler(req, res) {
   if (req.method !== "POST") {
@@ -14,14 +14,8 @@ export default async function handler(req, res) {
   await validateUser(req, res);
 
   try {
-    result = await changeCharacterName(username,characterName, newName);
-    if (!result) {
-      res.status(500).send({
-        message: "Unknown error",
-      });
-    } else {
-      res.json(result);
-    }
+    result = await changeCharacterName(username, characterName, newName);
+    res.json(result);
   } catch (err) {
     console.log(`err:::`, err);
     res.status(500).send({
