@@ -200,10 +200,6 @@ export default function RankPage() {
                 onClick={(e) => {
                   e.preventDefault();
                   const currentJF = user.JF;
-
-                  // alert(`暂未开发`);
-                  // return;
-
                   const _confirm = confirm(
                     `镶嵌要收取额外的 ${SOCKET_NEED_JF} 积分, 你同意吗?`
                   );
@@ -230,6 +226,7 @@ export default function RankPage() {
                   updated = replaceAt(updated, 28, socket4);
                   updated = replaceAt(updated, 30, socket5);
 
+                  setLoading(true);
                   const updatedItems = `0x${updated}${Items.substr(32)}`;
                   axios
                     .post(`/api/users/updateItemsSockets`, {
@@ -248,7 +245,9 @@ export default function RankPage() {
                       alert(err.response.data.message);
                       location.reload();
                     })
-                    .finally(() => {});
+                    .finally(() => {
+                      setLoading(false);
+                    });
                 }}
               >
                 {loading ? "loading..." : "确认镶嵌"}

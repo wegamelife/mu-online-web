@@ -56,6 +56,7 @@ export default function IndexPage() {
             <li>古战场加入的怪物生命值提升 10 倍</li>
             <li>练级地点, 勇者大陆东门, 古战场</li>
             <li>全服PK不红名</li>
+            <li>X商店有免费的新手武器跟盾牌</li>
           </ul>
         </div>
 
