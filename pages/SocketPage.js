@@ -231,8 +231,6 @@ export default function RankPage() {
                   updated = replaceAt(updated, 30, socket5);
 
                   const updatedItems = `0x${updated}${Items.substr(32)}`;
-                  // console.log(updatedItems);
-
                   axios
                     .post(`/api/users/updateItemsSockets`, {
                       username: user.memb___id,

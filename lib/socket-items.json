@@ -1,6 +1,31 @@
 [
   {
     "category": 0,
+    "name": "祝福大天使之剑",
+    "index": 51
+  },
+  {
+    "category": 2,
+    "name": "祝福大天使权杖",
+    "index": 25
+  },
+  {
+    "category": 4,
+    "name": "祝福大天使之弩",
+    "index": 30
+  },
+  {
+    "category": 5,
+    "name": "祝福大天使之杖",
+    "index": 49
+  },
+  {
+    "category": 5,
+    "name": "祝福大天使魔杖",
+    "index": 50
+  },
+  {
+    "category": 0,
     "name": "虚伪之剑",
     "index": 26
   },

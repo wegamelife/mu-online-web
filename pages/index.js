@@ -135,6 +135,10 @@ export default function IndexPage() {
               <li>暴风雪强化+黑龙波强化</li>
               <li>地狱火强化+黑龙波强化</li>
             </ul>
+            <li>弓箭手</li>
+            <ul>
+              <li>冰冻箭+多重箭</li>
+            </ul>
           </ul>
         </div>
 
