@@ -8,13 +8,13 @@ export default async function handler(req, res) {
     });
   }
 
-  const { username, items } = req.body;
+  const { username, items, itemName } = req.body;
   let result;
 
   await validateUser(req, res);
 
   try {
-    result = await updateItemsSockets(username, items);
+    result = await updateItemsSockets(username, items, itemName);
     res.json(result);
   } catch (err) {
     console.log(`err:::`, err);

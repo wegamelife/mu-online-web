@@ -54,7 +54,7 @@ function AccountInfo({ user }) {
   const [loading, setLoading] = useState(false);
   const isBlocked = user["bloc_code"] !== "0";
   const userAccount = user["memb___id"];
-  const jf = user["jf"];
+  const jf = user["JF"];
   const applyDays = user["appl_days"];
   const messageOk = <div>你当前的账号正常!</div>;
   const messageBlocked = (

@@ -13,6 +13,7 @@ import {
   getTotalPoints,
 } from "../lib/utils";
 import RenderImg from "../components/RenderImg";
+import { getUserData } from "../lib/client-utils";
 
 export default function MyHomePage() {
   const { user, updateUser, updateMessage } = useContext(UserContext);
@@ -34,8 +35,7 @@ export default function MyHomePage() {
         updateMessage(err.response.data.message);
       });
 
-    axios
-      .get(`/api/users/getUser?username=${user.memb___id}`)
+    getUserData(user.memb___id)
       .then((r) => {
         updateUser(r.data);
         localStorage.setItem("user", JSON.stringify(r.data));

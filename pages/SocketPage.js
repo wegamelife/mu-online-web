@@ -8,6 +8,7 @@ import socketItemProperties from "../lib/socket-item-properties.json";
 import SocketItems from "../lib/socket-items.json";
 import { parseItem, replaceAt } from "../lib/utils";
 import { SOCKET_NEED_JF } from "../lib/config";
+import { getUserData } from "../lib/client-utils";
 
 function getWarehouseFirstItem(Items) {
   const rawItem = Items.substr(0, 32);
@@ -26,7 +27,6 @@ function getWarehouseFirstItem(Items) {
 export default function RankPage() {
   const [warehouse, setWarehouse] = useState(null);
   const { user, updateUser, updateMessage } = useContext(UserContext);
-  const memb___id = user ? user["memb___id"] : -9999;
   const [firstItemInfo, setFirstItemInfo] = useState({
     rawItem: null,
     info: { name: "未知" },
@@ -95,6 +95,15 @@ export default function RankPage() {
               })
               .finally(() => {
                 setLoading(false);
+              });
+
+            getUserData(user.memb___id)
+              .then((r) => {
+                updateUser(r.data);
+                localStorage.setItem("user", JSON.stringify(r.data));
+              })
+              .catch((err) => {
+                updateMessage(err.response.data.message);
               });
           }}
         >
@@ -228,6 +237,7 @@ export default function RankPage() {
                     .post(`/api/users/updateItemsSockets`, {
                       username: user.memb___id,
                       items: updatedItems,
+                      itemName: firstItemInfo.info.name,
                     })
                     .then((r) => {
                       alert("成功镶嵌!");

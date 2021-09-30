@@ -151,8 +151,8 @@ export default function IndexPage() {
             <ul>
               <li>宝物封印5</li>
               <li>+13大天使武器</li>
-              <li>祝福组合+2</li>
-              <li>灵魂组合+2</li>
+              <li>祝福组合+3</li>
+              <li>灵魂组合+3</li>
               <li>玛雅</li>
             </ul>
           </ul>

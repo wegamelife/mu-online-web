@@ -30,6 +30,11 @@
     "index": 30
   },
   {
+    "category": 5,
+    "name": "绝望之杖",
+    "index": 32
+  },
+  {
     "category": 4,
     "name": "神羽之弓",
     "index": 23
@@ -84,6 +89,32 @@
     "category": 11,
     "name": "勇气之靴",
     "index": 46
+  },
+
+  {
+    "category": 7,
+    "name": "绝望之盔",
+    "index": 53
+  },
+  {
+    "category": 8,
+    "name": "绝望之铠",
+    "index": 53
+  },
+  {
+    "category": 9,
+    "name": "绝望之护腿",
+    "index": 53
+  },
+  {
+    "category": 10,
+    "name": "绝望之护手",
+    "index": 53
+  },
+  {
+    "category": 11,
+    "name": "绝望之靴",
+    "index": 53
   },
 
   {
