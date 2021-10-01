@@ -1,0 +1,23 @@
+1.03H反汇编改关闭MAIN弹网页
+-----------------------------------------------------------------------------------------------------------------
+原始OD汇编代码：在OD里Ctrl+F(框框里填入：lea     edx, dword ptr [ebp-10B8])来到下面的代码段
+005F0DA8      8D95 48EFFFFF lea     edx, dword ptr [ebp-10B8]
+005F0DAE   .  52            push    edx
+005F0DAF   .  68 DCCB8A00   push    008ACBDC                         ;  ASCII "www.muchina.com/pop.html"
+005F0DB4   .  8D8D 4CEFFFFF lea     ecx, dword ptr [ebp-10B4]
+005F0DBA   .  E8 A103E1FF   call    00401160
+005F0DBF   .  C745 FC 03000>mov     dword ptr [ebp-4], 3
+
+-----------------------------------------------------------------------------------------------------------------
+以下是修改好了的，只把005F0DA8地址处的lea     edx, dword ptr [ebp-10B8]汇编代码改为jmp     short 005F0DBF就OK了，四个NOP
+会自动加入，改好后在代码区右键---备份---保存数据到文件。好了一切都OK了
+005F0DA8     /EB 15         jmp     short 005F0DBF
+005F0DAA     |90            nop
+005F0DAB     |90            nop
+005F0DAC     |90            nop
+005F0DAD     |90            nop
+005F0DAE   . |52            push    edx
+005F0DAF   . |68 DCCB8A00   push    008ACBDC                         ;  ASCII "www.muchina.com/pop.html"
+005F0DB4   . |8D8D 4CEFFFFF lea     ecx, dword ptr [ebp-10B4]
+005F0DBA   . |E8 A103E1FF   call    00401160
+005F0DBF   . \C745 FC 03000>mov     dword ptr [ebp-4], 3

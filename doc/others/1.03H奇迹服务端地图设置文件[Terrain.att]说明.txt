@@ -1,0 +1,60 @@
+奇迹服务端地图设置文件说明
+【路径：MuOnline\DATA\】
+【.att文件为地图设置文件，是划分地图区域的文件,这些文件规定了地图里哪些地方是安全区,哪些地方可以走,哪些地方不可以走等等】
+Terrain1.att            =勇者大陆
+Terrain2.att            =地下城
+Terrain3.att            =冰风谷
+Terrain4.att            =仙踪林
+Terrain5.att            =失落之塔
+Terrain6.att            =竞技场（流放地）
+Terrain7.att            =竞技场（古战场）
+Terrain8.att            =亚特兰蒂斯
+Terrain9.att            =死亡沙漠
+Terrain10.att           =恶魔广场
+Terrain11.att           =天空之城
+Terrain12.att           =血色城堡
+Terrain19.att           =赤色要塞
+Terrain25.att           =卡里玛神庙
+Terrain31.att           =罗兰峡谷
+Terrain32.att           =魔炼之地
+Terrain33.att           =
+Terrain34.att           =幽暗森林
+Terrain35.att           =狼魂要塞
+Terrain35_OCCUPIED.att  =狼魂要塞-被占领
+Terrain35_PEACE.att     =狼魂要塞-和平
+Terrain35_WAR.att       =狼魂要塞-战争
+Terrain36.att           =
+Terrain37.att           =
+Terrain38.att           =坎特鲁废墟
+Terrain39.att           =坎特鲁遗址
+Terrain40.att           =计时塔
+Terrain40_CLOSE.att     =计时塔-关闭
+Terrain40_OPEN.att      =计时塔-开启
+Terrain41.att           =幻影寺院？
+Terrain42.att           =巴卡斯兵营
+Terrain43.att           =巴卡斯休息处
+Terrain46.att           =幻影寺院
+Terrain52.att           =幻术园
+Terrain57.att           =安宁池
+Terrain58.att           =冰霜之城
+Terrain59.att           =孵化魔地
+Terrain61.att           =
+Terrain62.att           =
+Terrain63.att           =圣诞之地
+Terrain64.att           =？
+Terrain65.att           =决斗场
+Terrain66.att           =？
+Terrain67.att           =？
+Terrain68.att           =？
+Terrain69.att           =？
+Terrain70.att           =？
+Terrain71.att           =？
+Terrain72.att           =？
+Terrain73.att           =？
+Terrain74.att           =1.03H+开头动画
+Terrain75.att           =1.03H+选择画面
+Terrain80.att           =罗兰市场
+Terrain81.att           =
+Terrain82.att           =
+
+

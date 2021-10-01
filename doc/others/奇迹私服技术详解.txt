@@ -1,0 +1,87 @@
+奇迹私服技术详解
+奇迹私服服务端文件MonsterSetBase　刷怪文件
+eventitembag－eventitembag19　宝箱文件
+item(chs)　装备属性文件
+Monster　怪物攻击防御文件
+commonserver（文本打开）经验掉宝参数设置文件　一些版本有自定义掉宝的，是ＤＬＬ扩展实现的
+movereq(chs)　对应游戏Ｍ键移动文件
+shop0－shop13　商店文件
+MuCastleData　攻城事件文件
+message_chs　游戏信息参数文件
+Quest(chs)　任务参数配置文件
+skill(chs)　技能魔法参数配置文件
+Terrain1－terrain56　地图文件
+MapServerInfo（文本打开）普通地图与攻城切换文件
+lang/Chs/commonloc (文本打开)版本以及验证串参数文件
+BloodCastle 血色城堡事件文件
+Gate 地图入口到达坐标文件
+IpList 服务器默认读取DATA文档IP清单
+EventManagement 信息事件服务
+ChaosCastle 恶魔广场事件文件
+ConnectMember 连接会员文本
+dataserver 数据服务文件
+MuConfig GS下的设置文件(升级点数等设置 
+\Data\badsyntax.txt------------------->禁止玩家说的话
+\Data\BloodCastle.dat---------------->修改血色城堡的掉落几率\进行时间设定\怪物暴物品概率及物品消失时间\水晶灵柩,城门体力
+\Data\ChaosCastle.dat---------------->赤色要塞时间设定\怪物暴物品概率及物品消失时间\时间设置24小时\奖金物品概率
+\Data\commonserver.cfg------------->修改经验等服务器最基本的设定
+\Data\DevilSquare.dat---------------->恶魔广场事件设置文件
+\Data\eventitembag17.txt------------>昆顿设置文件、普通和卓越的暴率、
+\Data\item(chs).txt-------------------->物品设置文件、各种物品掉落与否，角色使用等级、是否使用的设置！记得取消自动排列
+\Data\Monster.txt---------------------->怪物版本设置文件、修改添加怪物、修改怪物属性！          \Data\MonsterSetBase.txt------------>怪物刷新设置文件、这里你可以修改刷怪点和取消地图上的怪物！切记不要刷多了~超过服务器限制会报错！   
+\Data\MoveLevel.txt------------------>移动等级设置文件\修改移动各地图的等级要求      
+\Data\movereq(chs).txt--------------->地图移动设置文件\修改移动各地图所需要的金钱       
+\Data\MuCastleData.dat-------------->攻城战设置文件\论坛上都有专门的说明~这里就不多说了!             \Data\Quest(chs).txt------------------->转职设置文件,可以修改转职所要的钱和其他条件~一般最好不要动~毕竟改不改没什么用处~闹不好会出问题的!       
+\Data\RingAttackEvent.dat----------->魔法戒指事件设置文件,就是修改白色魔法师来袭的时间等设置       \Data\shop0.txt一直到shop13.txt-->都是商店的设置,可以用服务器所带的工具修改!       
+\Data\skill(chs).txt--------------------->技能魔法设置文件       
+\Cs\7CCsConfig.ini------------------->CS服务设置文件,设置1线2线       
+\GameServer\FNRGSSet.ini--------->Gs服务设置文件,昆顿掉物品设置,价格设定,主要是宝石爆率设定和登陆显示设置      \GameServer\GsSetRun.ini----------> Gs服务设置文件,物品价格定义,红蓝恢复设定,宝石点击成功率设定,还有卓越掉宝率(我改成了2,本来应该是掉很少,可是去天空还是狂掉,不知道怎么设置好),定义物品属性暴率,角色点数分配,合成机率,法师~守护~公式,战士~生命之光~技能设置,守卫说话,PK不红名地图设置      
+\GameServer1-------------------------->这里应该是2线的设置,里面的Data和GameServer这两个文件夹的修改和上面的一样,修改上面的就是修改1线的，修改这里的应该是修改2线的.个人想法不知对否,还没有自己试验过~呵呵~      
+\Gameserver_CS----------------------->感觉应该是攻城线里面的设置和上面应该相同. 
+
+eventitembag.txt=幸运宝箱
+eventitembag2.txt=骷髅王
+eventitembag3.txt=火龙王
+eventitembag4.txt=圣诞之星
+eventitembag5.txt=爆竹，爱情之心
+eventitembag6.txt=金质勋章
+eventitembag7.txt=银质勋章
+eventitembag8.txt=黄金宝箱+1
+eventitembag9.txt=黄金宝箱+2
+eventitembag10.txt=黄金宝箱+3
+eventitembag11.txt=黄金宝箱+4
+eventitembag12.txt=黄金宝箱+5
+eventitembag13.txt=勇士指环
+eventitembag14.txt=战士指环
+eventitembag15.txt=HeartofDarkLord（圣导师之心?）
+eventitembag16.txt=（没有使用）
+eventitembag17.txt=昆顿
+eventitembag18.txt=炼狱魔王
+eventitembag19.txt=城主合成
+eventitembag20.txt=神秘珠子
+eventitembag21.txt=粉红色宝箱
+eventitembag22.txt=红色宝箱
+eventitembag23.txt=蓝色宝箱
+eventitembag24.txt=PinkChocolateBox
+eventitembag25.txt=RedChocolateBox
+eventitembag26.txt=BlueChocolateBox
+eventitembag27.txt=LightPurpleCandyBox
+eventitembag28.txt=VermilionCandyBox
+eventitembag29.txt=DeepBlueCandyBox
+eventitembag30.txt暗黑指挥官掉落物品设置
+eventitembag31.txt巴卡斯司令官掉落物品
+eventitembag32.txt玛雅生命体掉落物品
+eventitembag33.txt咒怨魔王掉落物品
+eventitembag34  14 45 0 0 0 0 0 //幸运南瓜
+eventitembag38  season 草绿箱子(PcBar) - 召唤相关物品
+eventitembag41 14 52 0 0 0 0 0 //GM礼物宝箱    
+eventitembag42 新地图物品相关礼包1 14 55 0 0 0 0 0 //绿色玛雅宝箱    
+eventitembag43 新地图物品相关礼包2 14 56 0 0 0 0 0 //红色玛雅宝箱    
+eventitembag44 新地图物品相关礼包3 14 57 0 0 0 0 0 //紫色玛雅宝箱    
+eventitembag47 season3相关物品
+eventitembag48 樱花游戏箱 - 暴白色/红色/huang色樱花树枝  
+eventitembag49 白色樱花树枝 10  
+eventitembag50 红色樱花树枝 30
+eventitembag51 huang色樱花树枝 50
+
+ 

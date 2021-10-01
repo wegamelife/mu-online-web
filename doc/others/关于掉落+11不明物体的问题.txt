@@ -1,0 +1,1 @@
+服务端item.txt中的物品和客户端item.bmd对不上，原则上是服务器的 item.txt多了装备

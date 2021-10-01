@@ -1,0 +1,219 @@
+需要工具：加密图片编辑器.exe . PS（Photoshop） 或者其他的 绘图软件.
+
+1.打开 加密图片编辑器.exe 
+
+2.找到 客户端目录下 Data 文件夹 
+
+现在为大家介绍 每个文件夹 Effect（技能） Interface（窗口栏文件 ..例如角色栏 武器栏 物品栏 血条 经验条 包括登陆画面1）
+
+  item (武器 盾 翅膀) Logo (创建角色 . 登陆画面2) Monster (怪的图图..) NPC(商店老板等一些NPC 的图图)
+
+player(装备 游戏角色) skill (技能 和 坐骑)
+
+  Object 和 World 文件是 相等的 ... Object是组成画面的分画面 然而World 是整个地图的总画面 2者缺一不可
+--------------------------------------------------------------分割线
+Object World
+
+以下为详细解释:
+Object1 勇者大陆 组成画面 图图 包括勇者大陆上 一些怪掉的 苹果.. 
+World1 勇者大陆整个地图
+
+Object2 地下城 组成画面 图图
+World2 地下城整个地图
+
+Object3 冰风谷 组成画面 图图
+World3 冰风谷 整个地图
+
+Object4 仙棕林 组成画面 图图
+World4 仙踪林整个地图
+
+Object5 失落之塔 组成画面 图图
+World5 失落之塔整个地图
+
+Object7 古战场 组成画面 图图
+World7 古战场整个地图
+
+Object8 亚特兰蒂斯 组成画面 图图
+World8 亚特兰蒂斯整个地图
+
+Object9 死亡沙漠 组成画面 图图
+World9 死亡沙漠整个地图
+
+Object10 恶魔广场 组成画面 图图
+World10 恶魔广场整个地图
+
+Object11 天空之城 组成画面 图图
+World11 天空之城整个地图
+
+Object12 血色城堡 组成画面 图图
+World12 血色城堡整个地图
+
+Object19 ..暂无 组成画面 图图
+World19 
+
+Object25 卡利马 组成画面 图图
+World25 卡利马整个地图
+
+Object31 罗兰峡谷 组成画面 图图
+World31 罗兰峡谷整个地图
+
+Object32 魔炼之地 组成画面 图图
+World32 魔炼之地整个地图
+
+Object34 幽暗森林 组成画面 图图
+World 幽暗森林整个地图
+
+Object35 狼魂要塞 组成画面 图图
+World35 狼魂要塞整个地图
+
+Object38 坎特鲁废墟 组成画面 图图
+World39 坎特鲁废墟整个地图
+
+Object39 坎特鲁废墟2 组成画面 图图
+World38 坎特鲁废墟2整个地图
+
+........................剩下的自己看着找了 ...累死了......
+把World 文件中的  TerrainHeight.OZB 和 TerrainHeight.OZJ 导出..修改为白色 ..可提高地图亮度.
+-------------------------------------------------分割线
+player
+
+Player目录下，Armor开头的文件表示铠甲、Boot开头的文件表示鞋子、Glove开头的文件表示护手、Helm开头的文件表示头盔、Pant开头的表示护腿
+
+
+armor=铠甲 
+boot=靴子 
+glove=护手
+helm=头盔
+pant=护腿 
+elf=精灵 
+male=剑士和魔法师
+
+
+Elf01=藤装
+Elf02=天蚕装
+Elf03=风装
+Elf04=精灵装
+Elf05=女神装
+
+
+Male01=青铜装
+Male02=龙王装
+Male03=革装
+Male04=传说装
+Male05=骷髅装
+Male06=皮装
+Male07=翡翠装
+Male08=魔王装
+Male09=黄金装
+Male10=白金装
+Male16=亚特兰蒂斯装
+Male17=黑龙王装
+Male18=黑凤凰装
+Male19=火麒麟装
+Male20=圣灵装
+Male21=奔雷装
+..............新增加装备 自己慢慢 爬着找！..
+
+举个例子，比如 ArmorMale04.bmd，Armor是铠甲，Male04=传说装，那ArmorMale04.bmd就是传说之铠。GloveMale21.bmd，Glove是护手、Male21=奔雷装，那GloveMale21.bmd就是奔雷护手。
+
+如何替换呢？比如我要把亚特兰蒂斯装，替换为奔雷装。就找到ArmorMale21.bmd、BootMale21.bmd、GloveMale21.bmd、PantMale21.bmd，4个文件。为什么没有HelmMale21.bmd呢？因为Helm是头盔，奔雷装是魔剑穿的，当然没有头了。把这4个文件名中的21替换成16（注意，先备份原来的亚特兰蒂斯装的4个文件，也就是ArmorMale16.bmd、BootMale16.bmd、GloveMale16.bmd、PantMale16.bmd）
+
+如何修改呢？ 比如我们把亚特兰蒂斯装修改。就用 加密图片编辑器 找到ArmorMale21.bmd、BootMale21.bmd、GloveMale21.bmd、PantMale21.bmd，4个文件。然后 一个一个导出.修改玩后在导入.（具体的看图片教程操作）
+------------------------------------------分割线
+Item
+Item目录下
+
+Axe01.bmd —— Axe09.bmd 是斧的外观
+Bow01.bmd —— Bow19.bmd 是弓的外观
+CrossBow01.bmd —— CrossBow20.bmd 是弩的外观
+Mace01.bmd —— Mace08.bmd 是槌的外观
+Shield01.bmd —— Shield17.bmd 是盾的外观
+Spear01.bmd —— Spear10.bmd 是矛的外观
+Staff01.bmd —— Staff11.bmd 是杖的外观
+Sword01.bmd —— Sword32.bmd 是剑的外观
+Wing01.bmd —— Wing07.bmd 是翅膀的外观
+
+同样的道理，用替换/修改衣服的方法，来替换/修改这些武器，就OK了。
+
+
+比如，我现在手里拿着雷神之剑、雷神之剑的外观是Sword15.bmd，我想把雷神之剑替换成大天使之剑的外观，就吧Sword32.bmd改名为Sword15.bmd（备份原来的Sword15.bmd），进入游戏看看效果吧，呵呵。
+
+Sword17.bmd=破坏之剑
+Sword18.bmd=屠龙刀
+Sword19.bmd=奔雷剑
+Sword20.bmd=玄冰剑
+Sword32.bmd=大天使之剑
+Staff09.bmd=毁灭之杖
+Staff10.bmd=麒麟之杖
+Staff11.bmd=大天使之杖
+Bow18.bmd=圣灵之弓
+Bow19.bmd=圣灵之弩
+CrossBow20.bmd=大天使之弩
+Wing04.bmd —— Wing07.bmd 就是4个新翅膀。
+shield16.bmd、shield17.bmd就是97版的新盾牌。
+
+Sword：
+2短剑 
+1波刃剑 
+3西洋剑 
+5暗杀者 
+4东洋刀 
+7拉丁剑 
+8偃月刀 
+9巨蛇魔剑 
+10背叛者 
+6极光刀
+11/天行者 
+12传说之剑 
+14真红之剑 
+16帝王之剑 
+13太阳之剑 
+15雷神之剑
+
+Sfaff：
+1骷髅杖 
+2天使杖 
+3毒蛇杖 
+4闪电杖 
+5戈登之杖 
+6传说之杖 
+7复活之杖 
+8玛雅雷杖
+
+Shield：
+1圆盾
+5钢铁之盾 
+2战士之盾 
+3风之盾 
+7骷髏之盾 
+11自由之盾 
+4魔法之盾 
+10远古之盾 
+8尖刺之盾 
+6龙之盾 
+9失落之盾 
+12毒蛇之盾 
+15传说之盾 
+13布朗司 
+14火龙之盾
+
+修改提示 全部导出后 全部修改完 在导入 ...  
+--------------------------------------------------------分割线
+MU的Data目录下Interface是奇迹的界面外观（可以看到我的图里有技能值，就是用新版的替换老版本）、Monster目录下就是怪物的外观（自己修改吧，把幼龙变成天魔的样子都行，呵呵）、NPC目录下就是奇迹NPC的外观、Item目录下就是奇迹的装备和物品的外观（武器、翅膀、书、宝石……）、Player目录下，就是人物穿的铠甲的外观。Skill就是魔法技能等的外挂.
+
+突然见好累...奇迹复制了 一半..自己凑合另一半 终于把教程 做完了..
+
+补充：Data目录下Interface文件中 lo_back_01.OZJ 和 lo_back_02.OZJ  为第一个登陆界面 lo_lo.OZJ为进度条 颜色.
+
+                                Progress.OZJ 和 Progress_Back.OZJ 为经验条   颜色和背景
+
+      Data目录下Logo文件中 Loading01 Loading02 Loading02 为第二登陆界面(进入游戏)
+
+      Data目录下Logo文件中 Login_Back01 Login_Back02 为选择服务器时 背景界面.
+
+      Data目录下Logo文件中 back1 back2 back3 back4 为角色界面 背景.
+
+------------------------------------------------------------------------------------------------
+
+以上修改 ...都是 很XXX的  请些备份(复制) 部分修改文件 .. 以免导致 上奇迹时 出错.!
+

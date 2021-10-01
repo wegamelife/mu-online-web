@@ -1,0 +1,7 @@
+客户端技能图标文件
+
+
+newui_skill.ozj
+newui_skill2.ozj
+newui_statusicon.ozj
+newui_statusicon2.ozj

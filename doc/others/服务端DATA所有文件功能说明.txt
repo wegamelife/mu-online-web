@@ -1,0 +1,267 @@
+MonsterSetBase　刷怪文件 
+eventitembag－eventitembag19　宝箱文件 
+item(chs)　装备属性文件 
+Monster　怪物攻击防御文件 
+commonserver（文本打开）经验掉宝参数设置文件　一些版本有自定义掉宝的，是ＤＬＬ扩展实现的 
+movereq(chs)　对应游戏Ｍ键移动文件 
+shop0－shop20　商店文件 
+MuCastleData　攻城事件文件 
+message_chs　游戏信息参数文件 
+Quest(chs)　任务参数配置文件 
+skill(chs)　技能魔法参数配置文件 
+Terrain1－terrain56　地图文件 
+MapServerInfo（文本打开）普通地图与攻城切换文件 
+lang/Chs/commonloc (文本打开)版本以及验证串参数文件 
+BloodCastle 血色城堡事件文件 
+Gate 地图入口到达坐标文件 
+IpList 服务器默认读取DATA文档IP清单 
+EventManagement 信息事件服务 
+ChaosCastle 恶魔广场事件文件 
+ConnectMember 连接会员文本 
+dataserver 数据服务文件 
+MuConfig GS下的设置文件(升级点数等设置  
+\Data\badsyntax.txt------------------->禁止玩家说的话 
+\Data\BloodCastle.dat---------------->修改血色城堡的掉落几率\进行时间设定\怪物暴物品概率及物品消失时间\水晶灵柩,城门体力 
+\Data\ChaosCastle.dat---------------->赤色要塞时间设定\怪物暴物品概率及物品消失时间\时间设置24小时\奖金物品概率 
+\Data\commonserver.cfg------------->修改经验等服务器最基本的设定 
+\Data\DevilSquare.dat---------------->恶魔广场事件设置文件 
+\Data\eventitembag17.txt------------>昆顿设置文件、普通和卓越的暴率、 
+\Data\item(chs).txt-------------------->物品设置文件、各种物品掉落与否，角色使用等级、是否使用的设置！记得取消自动排列 
+\Data\Monster.txt---------------------->怪物版本设置文件、修改添加怪物、修改怪物属性！           
+\Data\MonsterSetBase.txt----->怪物刷新设置文件、这里你可以修改刷怪点和取消地图上的怪物！切记不要刷多了~超过服务器限制会报错！  
+\Data\MoveLevel.txt------------------>移动等级设置文件\修改移动各地图的等级要求       
+\Data\movereq(chs).txt--------------->地图移动设置文件\修改移动各地图所需要的金钱       
+\Data\MuCastleData.dat-------------->攻城战设置文件\论坛上都有专门的说明~这里就不多说了!             
+\Data\Quest(chs).txt------>转职设置文件,可以修改转职所要的钱和其他条件~一般最好不要动~毕竟改不改没什么用处~闹不好会出问题的!   
+\Data\RingAttackEvent.dat----------->魔法戒指事件设置文件,就是修改白色魔法师来袭的时间等设置       
+\Data\shop0.txt一直到shop13.txt-->都是商店的设置,可以用服务器所带的工具修改!       
+\Data\skill(chs).txt--------------------->技能魔法设置文件 
+
+=================================================
+MonsterSetBase　刷怪文件
+
+eventitembag－eventitembag19　宝箱文件
+
+item(chs)　装备属性文件
+
+Monster　怪物攻击防御文件
+
+commonserver（文本打开）经验掉宝参数设置文件　一些版本有自定义掉宝的，是ＤＬＬ扩展实现的
+
+movereq(chs)　对应游戏Ｍ键移动文件
+
+shop0－shop13　商店文件
+
+MuCastleData　攻城事件文件
+
+message_chs　游戏信息参数文件
+
+Quest(chs)　任务参数配置文件
+
+skill(chs)　技能魔法参数配置文件
+
+Terrain1－terrain56　地图文件
+
+MapServerInfo（文本打开）普通地图与攻城切换文件
+
+lang/Chs/commonloc (文本打开)版本以及验证串参数文件
+
+BloodCastle 血色城堡事件文件
+
+Gate 地图入口到达坐标文件
+
+IpList 服务器默认读取DATA文档IP清单
+
+EventManagement 信息事件服务
+
+ChaosCastle 恶魔广场事件文件
+
+ConnectMember 连接会员文本
+
+dataserver 数据服务文件
+
+MuConfig GS下的设置文件(升级点数等设置)
+
+
+
+
+lang(语言)
+
+badsyntax(错误语法)
+
+BloodCastle(血城)
+
+CastleDeepEvent(城堡事件)
+
+CCSetItemDropRate(套装掉率)
+
+ChaosCastle(血城)
+
+CheckFileList(文件检查列表)
+
+commonserver.cfg(服务器改IP和具体设置打怪经验,事件等文件) 
+
+ConnectMember(连接限制)
+
+Crywolf(狼毫事件)
+
+CSAuth.idx(CS授权)
+
+CSAuth.tab(CS授权)
+
+dataserver(数据服务器)
+
+dataserver.ini(数据服务器)
+
+Dec1
+
+DevilSquare(恶魔广场刷怪物件)
+
+Enc2(加密数据)
+
+eventitembag幸运宝箱（黄金幼龙会落）、天空宝箱和一个+4的幸运宝箱（此系统不会出，但GM可以调出来）
+
+eventitembag2骷髅王
+
+eventitembag3(目前没研究清楚，有清楚的请补充下)
+
+eventitembag4圣诞之星
+
+eventitembag5爆竹、爱情之心（属性比爆竹好）
+
+eventitembag6银质勋章
+
+eventitembag7金质勋章
+
+eventitembag8+1黄金宝箱（黄金格布林会落）普通40行、卓越35行  
+
+eventitembag9+2黄金宝箱（黄金泰坦会落)普通34行、卓越31行
+
+eventitembag10+3黄金宝箱（黄金火龙王会落）普通26行、卓越24行
+
+eventitembag11+4黄金宝箱（黄金巫师王会落）普通26行、卓越18行 
+
+eventitembag12+5黄金宝箱（黄金破坏会落）普通17行、卓越25行
+
+eventitembag13勇士指环 (新手上线送的40级才能扔出)
+
+eventitembag14勇士指环 (80级才能扔出)
+
+eventitembag15heart of darklord 黑暗之心??不同服务端可能有区别
+
+eventitembag16
+
+eventitembag17kundun event 昆顿???不同服务端可能有区别
+
+eventitembag18erohim event 攻城相关??不同服务端可能有区别
+
+eventitembag19lord mix 城主合成物品??不同服务端可能有区别
+
+eventitembag20
+
+eventitembag21
+
+eventitembag22
+
+eventitembag23
+
+EventManagement
+
+gate(地图位置.门口坐标,传送点坐标文件)
+
+IpList（改服务器名和IP） 
+
+ServerInfo.dat(服务器名称)   
+
+IpList.dat 
+
+MapServerInfo
+
+message.wtf 
+
+message_kor1.wtf
+
+message_kor.wtf
+
+Monster(怪物属性文件) 
+
+MonsterAIElement
+
+MonsterAIGroup
+
+MonsterAIRule
+
+MonsterAIUnit
+
+MonsterAutomata
+
+MonsterSetBase(刷怪文件) 
+
+MonsterSetBase2
+
+MonsterSkill
+
+MonsterSkillElement
+
+MonsterSkillUnit
+
+MoveLevel
+
+MovePath_35
+
+MuCastleData
+
+RingAttackEvent
+
+ServerInfo
+
+shop商店物品文件
+shop0勇者大陆 铁匠汉斯(117 140)
+shop1勇者大陆 酒吧老板娘 莉雅(124 133)
+shop2勇者大陆 魔导士 帕希(119 120) 
+shop3勇者大陆 南门流浪商人(183 136)
+shop4北郊流浪商人(6 144)
+shop5勇者大陆 少女安娜(128 85)
+shop6冰风谷 酒吧老板娘 莉雅(228 25)
+shop7冰风谷 魔导士 露西(225 41)
+shop8冰风谷 武器商人 苏菲(118 47)
+shop9仙踪林 工匠尤达(196 124)
+shop10仙踪林 精灵安吉拉(172 125)
+shop11仙踪林 阿莱斯
+shop12勇者大陆 武器商 托姆绅
+shop13
+shop14
+shop15
+shop16
+shop17
+
+skillElect.hit
+
+skillSpear.hit
+
+Terrain1.att
+Terrain2.att
+Terrain3.att
+Terrain4.att
+Terrain5.att
+Terrain6.att
+Terrain7.att
+Terrain8.att
+Terrain9.att
+Terrain10.att
+Terrain11.att
+Terrain12.att
+Terrain19.att
+Terrain25.att
+Terrain31.att
+Terrain32.att
+Terrain33.att
+Terrain34.att
+Terrain35.att
+Terrain36.att
+Terrain37.att
+Terrain38.att
+Terrain39.att
+Terrain40.att
+Terrain55.att
+Terrain56.att

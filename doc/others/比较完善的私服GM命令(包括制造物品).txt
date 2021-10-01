@@ -1,0 +1,104 @@
+/GMOVE 
+/GDGG 
+/打开隐身 
+/关闭隐身 
+积分相关命令: 
+/积分 
+/送分 
+选项开关: 
+/打开广告 
+/关闭广告 
+/打开答题 
+/关闭答题 
+扩展仓库命令: 
+/仓库 
+/关闭仓库密码 
+开心答题命令: 
+/答题 
+结婚相关命令: 
+/求婚 
+/结婚 
+/离婚 
+/夫妻 
+/婚否 
+/单方离婚 
+向所有玩家发消息命令: 
+/广告 
+/GM公告 
+新增冰风堡攻城,堡主增加 
+/取款钱数 
+/取积分积分数 
+新增移动目标地:冰风堡 
+扩展命令列表,只输入命令名可查看帮助:~移动到%s需要等级%d级.~在攻堡时间不得移动到冰风堡! 
+格式:/移动名称或/move名称 
+扩展移动需要MU币%d. 
+~GM专用命令,格式: 
+/GMOVE角色名地图编号X坐标Y坐标 
+/停权   
+/解除停权 
+/guidemove     战盟移动 /GuildMove战盟名称 地图编号坐标X坐标Y 
+用法和/move一样，但这个是把当前在线的战盟成员全部移动到你指定的地方，这样，GM就可以把两个盟的人召集在一起，在你的监督下进行盟战或其它活动了！（谢谢ydll） 
+/guideend       战盟禁止 
+/waend         战斗结束 
+/连线状态     (显示在线人数)     /连线状态 等级-等级 
+/追踪       移动到人物身边   /追踪 名字 
+/监视       显示为乱码   /监视名字 
+/Disconnect         断开连接(踢人) 
+/Move(移动) //移动任意角色到指定位置 /Move 名字地图编号坐标X坐标Y 地图号:0勇者大陆 1地下城 2冰风谷3仙踪林4失落之塔5流放地,6竞技场7亚特兰蒂斯8沙漠9恶魔广场10天空11血1 12血2依此类推 
+/trans名字地图坐标   传送某人去某地图~~~ （嘿嘿） 
+/SetBlock         封号 
+/UnsetBlock         解封 
+/DisableChat         禁止聊天 
+/EnableChat         允许聊天 
+/GuildMove         
+/GuildDisconnect       战盟断开 
+/GuildWaEnd       盟战结束 
+/GuildWaStat       盟战开始 
+/GuildWaStop       盟战停止 
+/RemainTime       剩余时间 
+!           发公告 
+    /make的用法 
+/makegoldtantaus:8,128,59 
+指令成功GM角色会有输入~go~的动作成功后就在沙漠加入黄金破坏一只tantaus是怪物的英文名字 
+        0勇者大陆部分 
+蜘蛛Spider 幼龙BudgeDragon 牛怪BullFighter 猎犬怪Hound 蛮牛怪EliteBullFighter 
+黑巫师Lich 巨人Giant 骷髅兵Skeleton 
+        1地下城 
+毒虫Lava 独眼巨人Cyclops幽灵Ghost 骷髅弓箭手SkeletonAcher 地狱猎犬怪HellHound 地狱蜘蛛HellSpider 
+骷髅战士EliteSkeleton 死灵巫师ThunderLich 毒牛怪PoisonBullFighter 暗黑骑士DakKnight 魔鬼戈登Gorgon 
+      2冰封谷 
+雪虫Worm 寒冰魔IceMonster 蓝魔怪Hommerd 暗杀者Assassin 雪人Yeti 雪人王EliteYeti冰后Ice1een 
+      3仙踪林部分 
+小哥布林Goblin 勾尾蝎ChainScorpion 大哥布林EliteGoblin 瓢虫怪BeetleMonster 偷猎者Hunter 
+树妖ForestMonster 亚昆Agon 石巨人StoneGolem 
+
+黄金破坏goldtantaus 
+
+
+还有一个刷物品的命令， 
+/gmove你的名字物品号 
+比如全属性青龙刀的代码是31145135 
+就打 
+/gmove你的名字31145135 
+你身上就多了一把刀了，不要打错，打错会有出错提示的 
+大陆0150110 
+
+冰谷221545 
+
+仙林3180100 
+
+失落420378 
+
+老外专区51010 
+
+古竞技场65050 
+
+海底72015 
+
+沙漠820060 
+
+广场98885 
+
+天空101515 
+
+血城111414

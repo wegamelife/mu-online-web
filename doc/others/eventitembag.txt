@@ -1,0 +1,33 @@
+eventitembag.txt 对应：幸运宝箱(黄金幼龙)、天空宝箱(奇迹通宝commonserver.cfg设置掉率)和无名宝箱
+eventitembag2.txt 对应：骷髅王
+eventitembag4.txt 对应：圣诞之星
+eventitembag5.txt 对应：爆竹、爱情之心(属性比爆竹好)
+eventitembag6.txt 对应：银质勋章
+eventitembag7.txt 对应：金质勋章
+eventitembag8.txt 对应：+1黄金宝箱(黄金葛布林) 普通40行、卓越35行
+eventitembag9.txt 对应：+2黄金宝箱(黄金泰坦) 普通34行、卓越31行
+eventitembag10.txt 对应：+3黄金宝箱(黄金火龙王) 普通26行、卓越24行
+eventitembag11.txt 对应：+4黄金宝箱(黄金巫师王) 普通26行、卓越18行
+eventitembag12.txt 对应：+5黄金宝箱(黄金破坏骑士) 普通17行、卓越25行
+eventitembag13  帝王的戒指活动
+eventitembag14  战士的戒指－友情活动
+eventitembag15  圣导师之心活动
+eventitembag16  //NULL
+eventitembag17  昆顿相关活动
+eventitembag18  魔炼之地物品暴设置
+eventitembag19  城主合成物品
+eventitembag20  神秘珠子
+eventitembag21  红色圣诞箱
+eventitembag22  绿色圣诞箱
+eventitembag23  蓝色圣诞箱
+eventitembag24  粉红色宝箱
+eventitembag25  红色宝箱
+eventitembag26  蓝色宝箱
+eventitembag27  粉红色宝箱
+eventitembag28  红色宝箱
+eventitembag29  蓝色宝箱
+eventitembag30  狼魂-暗黑指挥官DarkElf物品掉落控制
+eventitembag31  狼魂-Boss物品掉落控制
+eventitembag32  坎特鲁-玛雅副手
+eventitembag33  坎特鲁-Boss
+eventitembag34  幸运南瓜

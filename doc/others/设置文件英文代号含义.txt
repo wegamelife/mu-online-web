@@ -1,0 +1,8 @@
+type       类型(索引)
+index      序号
+level      等级
+skill      技能
+luck       幸运
+option     属性
+Dur        耐久(数量)
+Exc        卓越

@@ -1,0 +1,55 @@
+加精的“五号地图的任意修改方法”那篇文章我估计应该没人可以替换成功吧，至少我是替换失败的。 
+
+因为有人提到了96以后的地图文件 加密+校验码，修改之后main会报错！
+
+我研究了一个下午，终于找到可以替换5号流放地图的方法，我已经成功替换成了仙踪林，现在终于可以替换成任意地图了！不过还存在一个问题，除地面外其他墙壁之类的渲染无法显示出来，估计与main有关，所以我
+
+觉得用仙替换还是比较好看的，自己修改一下就可以了。
+
+替换方法：
+
+我用替换仙踪林的方法举例
+
+
+1.打开客户端World4把里面的文件全部复制一份替换到World6中去.把原来的EncTerrain6.att EncTerrain6.map EncTerrain6.obj删除.把Terrain6.att删除
+
+
+2. 接下来我们要修改地图验证，
+
+把替换进去的地图文件EncTerrain4.att EncTerrain4.map EncTerrain4.obj进行修改
+
+
+用UE打开你要替换的地图文件中的这2个文件，
+如 
+EncTerrain4.map 
+EncTerrain4.obj
+分别把他们的前4位代码替换成 8F a1 8C 3F
+（大家可以用UE打开原来5号地图的EncTerrain6.obj，看看前4位代码就清楚了，地图验证都在前4位上）
+
+
+用UE打开你要替换的地图文件中的att文件
+如
+EncTerrain4.att
+把他们的前4位代码替换成 8B E2 21 97
+（大家可以参看原来5号地图的EncTerrain6.att）
+
+
+3.把修改好的EncTerrain4.att EncTerrain4.map EncTerrain4.obj
+改名成 EncTerrain6.att EncTerrain6.map EncTerrain6.obj
+
+
+4.把Terrain4.att改名成Terrain6.att
+
+
+5.把Object4里面的文件全部复制一份到Object6，记得把原来流放地补丁Object6中的sou01.OZJ和sou02.OZJ
+
+这两个文件留下来。
+
+
+6.删除原来服务端的Terrain6.att文件，把修改好的World6文件夹下的Terrain.att复制进服务端并把文件改名为Terrain6.att
+(原来的那篇文章这里的讲述有错误，我也给误导了一次，应该是使用那个没有编号的Terrain.att文件进行替换)
+
+其他地图可用相似的办法进行替换
+
+至此已经替换完成了，可以自己进入的流放地试验一下，不过人物还是晃啊晃啊的
+

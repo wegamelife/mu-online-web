@@ -1,0 +1,35 @@
+if (pObj->Level > 50)
+  {
+    
+   char WonMSG[0xFF];
+   sprintf (WonMSG,"原配置：力量[%d]敏捷[%d]体力[%d]智力[%d]统率[%d] 升级点[%d]",pObj->Strength,pObj->Dexterity,pObj->Vitality,pObj->Energy,pObj->Leadership,pObj->LevelUpPoint);
+   GCServerMsgStringSend(WonMSG,aIndex, 0x01);
+   int Strength,Dexterity,Vitality,Energy,Leadership,LevelUpPoint;
+   Strength = pObj->Strength;
+   Dexterity = pObj->Dexterity;
+   Vitality = pObj->Vitality;
+   Energy = pObj->Energy;
+   LevelUpPoint = pObj->LevelUpPoint;
+   int Point=0;
+   Point =  Strength + Dexterity + Vitality + Energy - 4;
+   if (Point < 300)
+   {
+    GCServerMsgStringSend("[导师提示] 您的点数总合也不超过300点.不能洗点!",aIndex, 0x01);
+    return;
+   }
+   pObj->LevelUpPoint = LevelUpPoint + Point;
+   pObj->Strength=1;
+   pObj->Dexterity=1;
+   pObj->Vitality=1;
+   pObj->Energy=1;
+   GCLevelUpMsgSend(aIndex,pObj->Level);
+   char Msg[0xFF];
+   sprintf(Msg,"[导师提示] 初始化点数成功!当前升级点数为:[%d]",Point);
+   GCServerMsgStringSend(Msg,pObj->m_Index,0x01);
+   j_gObjCalCharacter(pObj->m_Index);
+  }
+  else
+  {
+   GCServerMsgStringSend("[导师提示] 您的等级不够洗点要求!",pObj->m_Index, 0x01);
+  }
+  return;

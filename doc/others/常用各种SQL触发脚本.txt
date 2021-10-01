@@ -1,0 +1,183 @@
+CREATE TRIGGER 新角色统一送自由分配点触发器 ON Character
+AFTER INSERT
+AS
+SET NOCOUNT ON
+UPDATE Character SET LevelUpPoint=需要送的点数
+FROM Inserted
+WHERE Character.accountid=inserted.accountid
+and Character.name=inserted.name
+SET NOCOUNT OFF
+
+------------------------------------------------------------------
+
+CREATE TRIGGER 新角色以职业送自由分配点触发器 ON Character
+AFTER INSERT
+AS
+SET NOCOUNT ON
+UPDATE Character SET LevelUpPoint=法师需要送的点数
+FROM Inserted
+WHERE Inserted.Class=0 and Character.accountid=inserted.accountid
+and Character.name=inserted.name
+UPDATE Character SET LevelUpPoint=战士需要送的点数
+FROM Inserted
+WHERE Inserted.Class=16 and Character.accountid=inserted.accountid
+and Character.name=inserted.name
+UPDATE Character SET LevelUpPoint=弓箭需要送的点数
+FROM Inserted
+WHERE Inserted.Class=32 and Character.accountid=inserted.accountid
+and Character.name=inserted.name
+UPDATE Character SET LevelUpPoint=魔剑需要送的点数
+FROM Inserted
+WHERE Inserted.Class=48 and Character.accountid=inserted.accountid
+and Character.name=inserted.name
+UPDATE Character SET LevelUpPoint=圣导需要送的点数
+FROM Inserted
+WHERE Inserted.Class=64 and Character.accountid=inserted.accountid
+and Character.name=inserted.name
+UPDATE Character SET LevelUpPoint=召唤需要送的点数
+FROM Inserted
+WHERE Inserted.Class=80 and Character.accountid=inserted.accountid
+and Character.name=inserted.name
+SET NOCOUNT OFF
+
+-----------------------------------------------------------------------
+
+CREATE TRIGGER 新圣导角色送统率触发器 ON Character
+AFTER INSERT
+AS
+SET NOCOUNT ON
+UPDATE Character SET Leadership=需要送的点数
+FROM Inserted
+WHERE Character.accountid=inserted.accountid
+and Character.name=inserted.name
+SET NOCOUNT OFF
+
+
+--------------------------------------------------------------------------------------
+
+CREATE TRIGGER 新帐号统一送钱到仓库触发器 ON warehouse
+AFTER INSERT
+AS
+SET NOCOUNT ON
+UPDATE warehouse SET Money=需要送的钱数
+FROM Inserted
+WHERE warehouse.accountid=inserted.accountid
+SET NOCOUNT OFF
+
+
+--------------------------------------------------------------------------------------
+
+CREATE TRIGGER 新角色统一送钱到身上触发器 ON Character
+AFTER INSERT
+AS
+SET NOCOUNT ON
+UPDATE Character SET Money=需要送的钱数
+FROM Inserted
+WHERE Character.accountid=inserted.accountid
+and Character.name=inserted.name
+SET NOCOUNT OFF
+
+
+-----------------------------------------------------------------------------------------
+
+CREATE TRIGGER 新角色自动送转触发器 ON Character
+AFTER INSERT
+AS
+SET NOCOUNT ON
+UPDATE Character SET 保存转身次数表项名称=需要送的转数
+FROM Inserted
+WHERE Inserted.保存转身次数表项名称=0 and Character.accountid=inserted.accountid
+and Character.name=inserted.nameSET NOCOUNT OFF
+
+
+--------------------------------------------------------------------------------------------------
+
+CREATE TRIGGER 法师自动三转触发器 ON Character
+AFTER INSERT
+AS
+SET NOCOUNT ON
+UPDATE Character SET Character.Class=3
+UPDATE Character SET Character.Quest=0xEADAFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+FROM Inserted
+Where Inserted.cLevel=400 and Inserted.Class=1
+SET NOCOUNT OFF
+
+
+-----------------------------------------------------------
+
+CREATE TRIGGER 战士自动三转触发器 ON Character
+AFTER INSERT
+AS
+SET NOCOUNT ON
+UPDATE Character SET Character.Class=19
+UPDATE Character SET Character.Quest=0xAAF6FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+FROM Inserted
+Where Inserted.cLevel=400 and Inserted.Class=17
+SET NOCOUNT OFF
+
+
+----------------------------------------------------------------------------
+
+
+CREATE TRIGGER 弓箭自动三转触发器 ON Character
+AFTER INSERT
+AS
+SET NOCOUNT ON
+UPDATE Character SET Character.Class=35
+UPDATE Character SET Character.Quest=0xEADAFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+FROM Inserted
+Where Inserted.cLevel=400 and Inserted.Class=33
+SET NOCOUNT OFF
+
+
+----------------------------------------------------------------------------------
+
+
+CREATE TRIGGER 魔剑自动三转触发器 ON Character
+AFTER INSERT
+AS
+SET NOCOUNT ON
+UPDATE Character SET Character.Class=50
+UPDATE Character SET Character.Quest=0xFFEAFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+FROM Inserted
+Where Inserted.cLevel=400 and Inserted.Class=48
+SET NOCOUNT OFF
+
+
+---------------------------------------------------------------------
+
+
+CREATE TRIGGER 圣导自动三转触发器 ON Character
+AFTER INSERT
+AS
+SET NOCOUNT ON
+UPDATE Character SET Character.Class=66
+UPDATE Character SET Character.Quest=0xFFEAFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+FROM Inserted
+Where Inserted.cLevel=400 and Inserted.Class=64
+SET NOCOUNT OFF
+
+
+-------------------------------------------------------------------------------------
+
+CREATE TRIGGER 召唤自动三转触发器 ON Character
+AFTER INSERT
+AS
+SET NOCOUNT ON
+UPDATE Character SET Character.Class=83
+UPDATE Character SET Character.Quest=0xEAEAFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+FROM Inserted
+Where Inserted.cLevel=400 and Inserted.Class=80
+SET NOCOUNT OFF
+
+
+
+
+
+
+
+
+
+
+
+
