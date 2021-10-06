@@ -108,20 +108,40 @@ export default function IndexPage() {
           <div className="overlay" />
           <h5>新增自定义套装</h5>
           <ul>
-            <li>战士: 塞恩的愤怒</li>
-            <li>战士: 塞恩的勇气</li>
-            <li>魔法师: 尼古拉斯的审判</li>
-            <li>魔法师: 尼古拉斯的信念</li>
-            <li>圣导师: 塔拉夏的裁决</li>
-            <li>圣导师: 塔拉夏的外袍</li>
-            <li>弓箭手: 铁娘子的柔情</li>
-            <li>弓箭手: 铁娘子的雅娴</li>
-            <li>召唤师: 瑟西的祝福</li>
-            <li>召唤师: 瑟西的外套</li>
-            <li>魔剑士: 大嫖客的快乐</li>
-            <li>魔剑士: 大嫖客的伪装</li>
-            <li>魔剑士: 狼骑De王子</li>
-            <li>魔剑士: 狼骑De公主</li>
+            <li>战士</li>
+            <ul>
+              <li>塞恩的愤怒</li>
+              <li>塞恩的勇气</li>
+              <li>塞恩De王子</li>
+              <li>塞恩De公主</li>
+            </ul>
+            <li>魔法师</li>
+            <ul>
+              <li>尼古拉斯的审判</li>
+              <li>尼古拉斯的信念</li>
+            </ul>
+            <li>圣导师</li>
+            <ul>
+              <li>塔拉夏的裁决</li>
+              <li>塔拉夏的外袍</li>
+            </ul>
+            <li>弓箭手</li>
+            <ul>
+              <li>铁娘子的柔情</li>
+              <li>铁娘子的雅娴</li>
+            </ul>
+            <li>召唤师</li>
+            <ul>
+              <li>瑟西的祝福</li>
+              <li>瑟西的外套</li>
+            </ul>
+            <li>魔剑士</li>
+            <ul>
+              <li>大嫖客的快乐</li>
+              <li>大嫖客的伪装</li>
+              <li>狼骑De王子</li>
+              <li>狼骑De公主</li>
+            </ul>
           </ul>
         </div>
 
@@ -164,9 +184,9 @@ export default function IndexPage() {
             <li>纪念戒指</li>
             <ul>
               <li>在X商店售卖, 5000积分</li>
-              <li>防御成功率80%</li>
-              <li>较少伤害80%</li>
-              <li>增加生命1500%</li>
+              <li>防御成功率70%</li>
+              <li>较少伤害70%</li>
+              <li>增加生命1200%</li>
               <li>生命自动恢复 10%</li>
               <li>附带火色闪耀效果</li>
             </ul>

@@ -24,11 +24,16 @@ hr {
 .bg-jump {
   z-index: 1;
   position: relative;
-  /*background-image: url("/banner.jpg");*/
+  background-image: url("/top-fon-bg.jpg");
   background-size: cover;
   background-repeat: no-repeat;
   /*text-shadow: 1px 1px 1px #ddd;*/
   /*color: #fff;*/
+  background-position: top center;
+}
+
+.bg-jump .overlay {
+  opacity: .9;
 }
 
 .bg-jump .btn {
