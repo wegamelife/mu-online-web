@@ -33,6 +33,7 @@ export default function Layout({ children, home }) {
                 <Nav.Link href="/">首页</Nav.Link>
                 <Nav.Link href="/MyHomePage">账号管理</Nav.Link>
                 <Nav.Link href="/SocketPage">高级镶嵌</Nav.Link>
+                <Nav.Link href="/RecyclePage">物品回收</Nav.Link>
                 <Nav.Link href="/RankPage">排行榜</Nav.Link>
                 <Nav.Link href="/GameDownloadPage">游戏下载</Nav.Link>
               </Nav>

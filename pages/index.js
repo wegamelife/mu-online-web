@@ -62,22 +62,23 @@ export default function IndexPage() {
 
         <div className="box">
           <div className="overlay" />
-          <h5>魔王困顿</h5>
+          <h5>BOSS相关</h5>
           <ul>
-            <li>刷新地点古战场, 亚特兰蒂斯, 天空之城</li>
-            <li>5 分钟刷新一次, 每个地方刷新 4 只</li>
-            <li>掉落所有套装物品</li>
+            <li>魔王困顿</li>
+            <ul>
+              <li>刷新地点古战场, 亚特兰蒂斯, 天空之城</li>
+              <li>5 分钟刷新一次, 每个地方刷新 4 只</li>
+              <li>掉落所有套装物品</li>
+            </ul>
+            <li>冰霜蜘蛛</li>
+            <ul>
+              <li>掉落大天使以及高等级的武器盾牌</li>
+              <li>包括 380/400 武器防具</li>
+              <li>蜘蛛刷新时间默认10分钟</li>
+            </ul>
           </ul>
         </div>
-        <div className="box">
-          <div className="overlay" />
-          <h5>冰霜蜘蛛</h5>
-          <ul>
-            <li>掉落大天使以及高等级的武器盾牌</li>
-            <li>包括 380/400 武器防具</li>
-            <li>蜘蛛刷新时间默认10分钟</li>
-          </ul>
-        </div>
+
         <div className="box">
           <div className="overlay" />
           <h5>X 商店</h5>
@@ -159,6 +160,15 @@ export default function IndexPage() {
               <li>祝福组合+3</li>
               <li>灵魂组合+3</li>
               <li>玛雅</li>
+            </ul>
+            <li>纪念戒指</li>
+            <ul>
+              <li>在X商店售卖, 5000积分</li>
+              <li>防御成功率80%</li>
+              <li>较少伤害80%</li>
+              <li>增加生命1500%</li>
+              <li>生命自动恢复 10%</li>
+              <li>附带火色闪耀效果</li>
             </ul>
           </ul>
         </div>

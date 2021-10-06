@@ -236,9 +236,7 @@ export default function RankPage() {
                     })
                     .then((r) => {
                       alert("成功镶嵌!");
-                      setTimeout(() => {
-                        location.reload();
-                      }, 500);
+                      location.reload();
                     })
                     .catch((err) => {
                       console.log(err.response.data);
