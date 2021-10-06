@@ -9,10 +9,10 @@ import { CAN_RESET_LIFE } from "../lib/config";
 import {
   checkName,
   checkNameLength,
+  getCharacterAbbr,
   getMoreWarehouseNeedJF,
   getTotalPoints,
 } from "../lib/utils";
-import RenderImg from "../components/RenderImg";
 import { getUserData } from "../lib/client-utils";
 
 export default function MyHomePage() {
@@ -311,11 +311,15 @@ function Character({ item }) {
   };
 
   const is3Zhuan = [3, 19, 35, 83, 50, 66].includes(item["Class"]);
+  const abbr = getCharacterAbbr(item["Class"]);
   return (
-    <Card style={{ width: "100%" }} key={item["Name"]}>
+    <Card
+      style={{ width: "100%" }}
+      key={item["Name"]}
+      className={`rank-card ${abbr} shadow-sm`}
+    >
       <Card.Header>
         <div className="c-header">
-          <RenderImg roleName={roleName} />
           <div className="name-role">
             <h5>{item["Name"]}</h5>
             <div>{roleName}</div>

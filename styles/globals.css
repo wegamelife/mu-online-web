@@ -67,7 +67,7 @@ hr {
   background-image: url("/tubie.png");
   background-size: contain;
   background-repeat: no-repeat;
-  background-position: 5% 99%;
+  background-position: center right;
 }
 
 .index-feature .box .overlay {
@@ -129,7 +129,7 @@ hr {
 
 @media (max-width: 1200px) {
   .characters {
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr;
   }
 }
 
@@ -144,35 +144,34 @@ hr {
   align-items: center;
 }
 
-.c-header .name-role {
-  margin-left: 1rem;
-}
-
 .rank {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
   gap: 1rem;
   margin-bottom: 2rem;
 }
 
 @media (max-width: 1200px) {
   .rank {
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr;
   }
 }
 
 @media (max-width: 768px) {
   .rank {
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr 1fr;
   }
 }
 
 .rank-card {
   position: relative;
+  border: none;
+  border-radius: 0;
 }
 
 .rank-card .card-header {
   background-color: #fff;
+  border-radius: 0;
 }
 
 .rank-card .max {
@@ -180,6 +179,32 @@ hr {
   top: 0;
   right: 0;
   padding: 4px;
+}
+
+
+.rank-card .card-header {
+  background-image: url("/elf.jpg");
+  background-position: top center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  color: #fff;
+  height: 110px;
+}
+
+.rank-card.dk .card-header {
+  background-image: url("/dk.jpg");
+}
+.rank-card.dl .card-header {
+  background-image: url("/dl.jpg");
+}
+.rank-card.mg .card-header {
+  background-image: url("/mg.jpg");
+}
+.rank-card.sum .card-header {
+  background-image: url("/sum.jpg");
+}
+.rank-card.elf .card-header {
+  background-image: url("/elf.jpg");
 }
 
 .rank-card-top-style {

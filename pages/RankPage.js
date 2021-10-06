@@ -3,8 +3,7 @@ import { Card, ListGroup, ListGroupItem } from "react-bootstrap";
 import { useState, useEffect } from "react";
 import RoleCodeMap from "../lib/RoleCodeMap";
 import axios from "axios";
-import { getTotalPoints } from "../lib/utils";
-import RenderImg from "../components/RenderImg";
+import { getCharacterAbbr, getTotalPoints } from "../lib/utils";
 
 export default function RankPage() {
   const [users, setUsers] = useState([]);
@@ -12,7 +11,7 @@ export default function RankPage() {
 
   useEffect(() => {
     const url = `/api/users/getCharacters`;
-    const devUrl = `/json/1.json`;
+    const devUrl = `/json/characters.json`;
     axios
       .get(url)
       .then((res) => {
@@ -63,16 +62,18 @@ export default function RankPage() {
 function Character({ item, index, online }) {
   const roleName = RoleCodeMap[item["Class"]];
   const totalPoints = getTotalPoints(item);
-
+  const abbr = getCharacterAbbr(item["Class"]);
   const isMax = item["cLevel"] >= 4000 && item["MASTER_LEVEL"] >= 200;
 
   return (
-    <Card style={{ width: "100%" }} key={item["Name"]} className="rank-card">
+    <Card
+      style={{ width: "100%" }}
+      key={item["Name"]}
+      className={`rank-card ${abbr} shadow-sm`}
+    >
       <Card.Header>
         {isMax && <span className="max">Max</span>}
-
         <div className="c-header">
-          <RenderImg roleName={roleName} />
           <div className="name-role">
             <h5 className={index < 3 ? "rank-card-top-style" : ""}>
               {item["Name"]}

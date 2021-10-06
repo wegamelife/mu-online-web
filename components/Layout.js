@@ -44,10 +44,9 @@ export default function Layout({ children, home }) {
                 </Nav>
               ) : (
                 <Nav>
-                  <Nav.Link href="/">
+                  <Nav.Link href="/MyAccountStatus">
                     {user["memb___id"]}({user["JF"]})
                   </Nav.Link>
-                  <Nav.Link href="/MyAccountStatus">账号状态</Nav.Link>
                   <Nav.Link
                     href="/"
                     onClick={(e) => {
