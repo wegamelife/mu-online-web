@@ -3,30 +3,30 @@
     "category": 0,
     "name": "祝福大天使之剑",
     "index": 51,
-    "price": 3000
+    "price": 5000
   },
   {
     "category": 2,
     "name": "祝福大天使权杖",
     "index": 25,
-    "price": 3000
+    "price": 5000
   },
   {
     "category": 4,
     "name": "祝福大天使之弩",
     "index": 30,
-    "price": 3000
+    "price": 5000
   },
   {
     "category": 5,
     "name": "祝福大天使之杖",
     "index": 49,
-    "price": 3000
+    "price": 5000
   },
   {
     "category": 5,
     "name": "祝福大天使魔杖",
     "index": 50,
-    "price": 3000
+    "price": 5000
   }
 ]

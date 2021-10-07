@@ -234,5 +234,25 @@
     "category": 11,
     "name": "巨石之靴",
     "index": 47
+  },
+  {
+    "category": 6,
+    "name": "荣誉之盾",
+    "index": 17
+  },
+  {
+    "category": 6,
+    "name": "火蛇之盾",
+    "index": 18
+  },
+  {
+    "category": 6,
+    "name": "寒冰之盾",
+    "index": 19
+  },
+  {
+    "category": 6,
+    "name": "亡魂之盾",
+    "index": 20
   }
 ]
