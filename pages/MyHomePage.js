@@ -14,6 +14,7 @@ import {
   getTotalPoints,
 } from "../lib/utils";
 import { getUserData } from "../lib/client-utils";
+import RenderImg from "../components/RenderImg";
 
 export default function MyHomePage() {
   const { user, updateUser, updateMessage } = useContext(UserContext);
@@ -320,6 +321,7 @@ function Character({ item }) {
     >
       <Card.Header>
         <div className="c-header">
+          <RenderImg roleName={roleName} />
           <div className="name-role">
             <h5>{item["Name"]}</h5>
             <div>{roleName}</div>

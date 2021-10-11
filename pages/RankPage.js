@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import RoleCodeMap from "../lib/RoleCodeMap";
 import axios from "axios";
 import { getCharacterAbbr, getTotalPoints } from "../lib/utils";
+import RenderImg from "../components/RenderImg";
 
 export default function RankPage() {
   const [users, setUsers] = useState([]);
@@ -74,6 +75,7 @@ function Character({ item, index, online }) {
       <Card.Header>
         {isMax && <span className="max">Max</span>}
         <div className="c-header">
+          <RenderImg roleName={roleName} />
           <div className="name-role">
             <h5 className={index < 3 ? "rank-card-top-style" : ""}>
               {item["Name"]}

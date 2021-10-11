@@ -172,43 +172,52 @@ hr {
 .rank-card .card-header {
   background-color: #fff;
   border-radius: 0;
+  padding-top: 12px;
 }
 
 .rank-card .max {
   position: absolute;
   top: 0;
   right: 0;
-  padding: 4px;
+  padding: 6px;
+}
+
+.name-role {
+  margin-left: 6px;
+}
+
+.name-role > h5 {
+  font-size: 18px;
 }
 
 
-.rank-card .card-header {
-  background-image: url("/elf.jpg");
-  background-position: top center;
-  background-size: cover;
-  background-repeat: no-repeat;
-  color: #fff;
-  height: 110px;
-}
+/*.rank-card .card-header {*/
+/*  background-image: url("/elf.jpg");*/
+/*  background-position: top center;*/
+/*  background-size: cover;*/
+/*  background-repeat: no-repeat;*/
+/*  color: #fff;*/
+/*  height: 110px;*/
+/*}*/
 
-.rank-card.dk .card-header {
-  background-image: url("/dk.jpg");
-}
-.rank-card.dw .card-header {
-  background-image: url("/dw.jpg");
-}
-.rank-card.dl .card-header {
-  background-image: url("/dl.jpg");
-}
-.rank-card.mg .card-header {
-  background-image: url("/mg.jpg");
-}
-.rank-card.sum .card-header {
-  background-image: url("/sum.jpg");
-}
-.rank-card.elf .card-header {
-  background-image: url("/elf.jpg");
-}
+/*.rank-card.dk .card-header {*/
+/*  background-image: url("/dk.jpg");*/
+/*}*/
+/*.rank-card.dw .card-header {*/
+/*  background-image: url("/dw.jpg");*/
+/*}*/
+/*.rank-card.dl .card-header {*/
+/*  background-image: url("/dl.jpg");*/
+/*}*/
+/*.rank-card.mg .card-header {*/
+/*  background-image: url("/mg.jpg");*/
+/*}*/
+/*.rank-card.sum .card-header {*/
+/*  background-image: url("/sum.jpg");*/
+/*}*/
+/*.rank-card.elf .card-header {*/
+/*  background-image: url("/elf.jpg");*/
+/*}*/
 
 .rank-card-top-style {
   color: red;
